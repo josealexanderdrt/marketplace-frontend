@@ -4,9 +4,9 @@ Final full-stack development project
 Team:
  Hans Latoja
  Alenxader Duarte
- Jean Barraessssssssssssss
+ Jean Barraez
 
 Name:
 Div Divinos
-
+Buenos
 
