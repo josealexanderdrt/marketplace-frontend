@@ -9,7 +9,7 @@ Members:
  
  🙍‍♂️{Jean Barraez}
 
-Tem:
+Team:
 
 {Div Divinos}
 
