@@ -3,13 +3,13 @@ Final full-stack development project
 
 Members:
 
- 🙍‍♂️Hans Latoja
+ 🙍‍♂️{Hans Latoja}
  
- 🙍‍♂️Alenxader Duarte
+ 🙍‍♂️{Alenxader Duarte}
  
- 🙍‍♂️Jean Barraez
+ 🙍‍♂️{Jean Barraez}
 
 Tem:
 
-Div Divinos
+{Div Divinos}
 
