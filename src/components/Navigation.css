@@ -1,4 +1,25 @@
-.cubo1{
-    height: 7rem;
-    width: 15rem;
+/* .cubo1{
+    height: 1rem;
+    width: 4rem;
+  } */
+  .nav_style{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
   }
+
+  .cubos1{
+    width: 8rem;
+  }
+ /*  .register_login{
+    padding: rem;
+  } */
+
+  .register_login a {
+    padding: 1rem; /* Añade un poco de espacio entre los enlaces */
+    margin-right: 1rem; /* Añade margen a la derecha de cada enlace */
+    text-decoration: none; /* Elimina el subrayado */
+    color: black;
+
+  }
+  

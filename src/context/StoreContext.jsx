@@ -1,4 +1,4 @@
-import axios from "axios";
+/* import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 export const StoreContext = createContext();
@@ -52,3 +52,4 @@ const StoreProvider = ({ children }) => {
 };
 
 export default StoreProvider;
+ */

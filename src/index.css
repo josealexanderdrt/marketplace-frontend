@@ -1,0 +1,15 @@
+.view_login {
+  display: flex;
+  margin-top: 5rem;
+}
+
+/* .cubos3{
+    margin-left: 2rem;
+} */
+
+.cubos3 {
+    max-width: 666px; /* Establece un ancho máximo */
+    max-height: 375px; /* Establece un alto máximo */
+    width: auto; /* Permite que el ancho se ajuste automáticamente para mantener la proporción de la imagen */
+    height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción de la imagen */
+  }

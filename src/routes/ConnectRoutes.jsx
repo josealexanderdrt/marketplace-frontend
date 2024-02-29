@@ -1,6 +1,6 @@
 import { Routes as Rs, Route as R } from "react-router-dom";
-/* import Home from "../views/Home";
-import Favorites from "../views/Favorites"; */
+import Home from "../views/Home";
+/* import Favorites from "../views/Favorites"; */
 import NotFound from "../views/NotFound";
 import Login from "../views/Login";
 import Register from "../views/Register";
