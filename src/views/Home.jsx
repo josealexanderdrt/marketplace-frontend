@@ -1,10 +1,10 @@
 import React from 'react'
-import Footer from "./Footer";
-
+import Catalogue from "../components/Catalogue";
 const Home = () => {
   return (
-    <div>Home: Aca va la parte de alexander
-        <Footer />
+    <div>
+        <Catalogue />
+        
     </div>
   )
 }
