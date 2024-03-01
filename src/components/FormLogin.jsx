@@ -6,81 +6,81 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
 import google_aut from "../../src/assets/image/google_aut.png";
 import "./FormLogin.css";
-import  {  ToastContainer ,  toast, Bounce }  from  'react-toastify' ; 
-import  'react-toastify/dist/ReactToastify.css' ;
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
-import {StoreContext} from "../context/StoreContext"
+import { StoreContext } from "../context/StoreContext";
 
-
-const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const FormLogin = () => {
-  const {users} = useContext(StoreContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
-  
+  const { users } = useContext(StoreContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-  
-    if (email.trim() === '' || password.trim() === '') {
-      toast.warn(' 👀😢fields cannot be empty', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-        });
-      return;
-    }
-    
-    if (!emailRegex.test(email)) {
-      toast.warn('😪 The email format is not correct', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-        });
-      
-      return;
-    }
-  
-    const user = users.find(user => user.email === email && user.password === password);
 
-if (user) {  
-  navigate('/profile');
-} else {
-    toast.error('👀😢El email y la contraseña no coinciden', {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-    transition: Bounce,
-  });
-}
-  }
+    if (email.trim() === "" || password.trim() === "") {
+      toast.warn(" 👀😢fields cannot be empty", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      toast.warn("😪 The email format is not correct", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
+
+      return;
+    }
+
+    const user = users.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    if (user) {
+      navigate("/profile");
+    } else {
+      toast.error("👀😢El email y la contraseña no coinciden", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
+  };
 
   return (
     <Container className="box_daddy_form">
       <Button
         className="auth_google rounded-button"
         variant="light mt-5"
-        style={{fontSize: '1rem'}}
+        style={{ fontSize: "1rem" }}
         onClick={() =>
           loginWithRedirect({
             screen_hint: "signup",
@@ -92,10 +92,18 @@ if (user) {
         Sign in with Google
       </Button>
       <hr className="vertical_line" />
-      <Form className="form_login d-flex justify-content-center flex-column formulario"  onSubmit={handleLogin}>
+      <Form
+        className="form_login d-flex justify-content-center flex-column formulario"
+        onSubmit={handleLogin}
+      >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <Form.Text className="text-muted">
             {/*  We'll never share your email with anyone else. */}
           </Form.Text>
@@ -103,7 +111,12 @@ if (user) {
 
         <Form.Group className="mb-3  " controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>

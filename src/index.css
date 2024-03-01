@@ -14,9 +14,15 @@
   height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción de la imagen */
 }
 
-.view_profile{
+.view_profile {
   display: flex;
   max-width: 348px;
   max-height: 349px;
 }
 
+.icons_user_style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
