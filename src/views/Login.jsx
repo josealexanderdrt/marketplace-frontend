@@ -2,7 +2,7 @@ import React from "react";
 import mundo_cubo from "../../src/assets/image/mundo_cubo.png";
 import FormLogin from "../components/FormLogin";
 import { Container } from "react-bootstrap";
-/* import Input_view from './Input_view' */
+
 
 const Login = () => {
   return (

@@ -3,8 +3,8 @@ import Catalogue from "../components/Catalogue";
 const Home = () => {
   return (
     <div>
-        <Catalogue />
         
+        <Catalogue />  
     </div>
   )
 }
