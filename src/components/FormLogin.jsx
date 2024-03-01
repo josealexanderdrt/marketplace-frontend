@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
 import google_aut from "../../src/assets/image/google_aut.png";
+
 import "./FormLogin.css";
 import  {  ToastContainer ,  toast, Bounce }  from  'react-toastify' ; 
 import  'react-toastify/dist/ReactToastify.css' ;
@@ -39,7 +40,7 @@ const Formulary = () => {
         });
       return;
     }
-  
+    
     if (!emailRegex.test(email)) {
       toast.warn('😪 The email format is not correct', {
         position: "top-center",
@@ -57,22 +58,22 @@ const Formulary = () => {
     }
   
     const user = users.find(user => user.email === email && user.password === password);
-  
-    if (user) {  
-      navigate('/profile');
-    } else {
-      toast.error('👀😢El email y la contraseña no coinciden', {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
-    }
+
+if (user) {  
+  navigate('/profile');
+} else {
+    toast.error('👀😢El email y la contraseña no coinciden', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    transition: Bounce,
+  });
+}
   }
 
   return (
