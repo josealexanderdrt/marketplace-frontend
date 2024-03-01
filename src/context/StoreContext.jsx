@@ -5,11 +5,12 @@ export const StoreContext = createContext();
 
 // Consume json for testing , replace by backend URL
 const url_products = "/products.json";
-/* const url_users = "/users.json"; */
+const url_users = "/users.json";
 
 export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  /* const [users, setUsers] = useState([]); */
+   const [users, setUsers] = useState([]);
+
 
   const getProducts = () => {
     axios
@@ -27,7 +28,7 @@ export const StoreProvider = ({ children }) => {
     getProducts()
   },[])
 
-/*   const getUsers = () => {
+  const getUsers = () => {
     axios
       .get(url_users)
       .then((response) => {
@@ -41,7 +42,7 @@ export const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     getUsers()
-  },[]) */
+  },[])
 
   return (
     <StoreContext.Provider value= {{products,setProducts}}>
