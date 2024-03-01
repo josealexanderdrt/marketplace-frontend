@@ -12,28 +12,6 @@ const App = () => {
       <ConnectRoutes />
     </div>
   );
-  {
-    /* <div> */
-  }
-  {
-    /*  <nav> */
-  }
-  {
-    /* </nav> */
-  }
-  {
-    /*   <main>
-   <Routes>
-    <Route path="/" element={<Login />} />
-    <Route path="/Register" element={<Register />} />
-    <Route path="/Register" element={<Register />} />
-  
-   </Routes>
-  </main> */
-  }
-  {
-    /*  </div> */
-  }
 };
 
 export default App;

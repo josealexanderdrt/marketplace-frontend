@@ -1,22 +1,22 @@
-/* import axios from "axios";
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 export const StoreContext = createContext();
 
 // Consume json for testing , replace by backend URL
 const url_products = "/products.json";
-const url_users = "/users.json";
+/* const url_users = "/users.json"; */
 
-const StoreProvider = ({ children }) => {
+export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [users, setUsers] = useState([]);
+  /* const [users, setUsers] = useState([]); */
 
   const getProducts = () => {
     axios
       .get(url_products)
       .then((response) => {
-        const { products } = response.data;
-        setProducts(products);
+        const { products: productsDB } = response.data;
+        setProducts(productsDB.map((product)=> ({ ...product, isFavorite: false})));
       })
       .catch((error) => {
         console.error("You did not obtain the requested data:", error);
@@ -27,7 +27,7 @@ const StoreProvider = ({ children }) => {
     getProducts()
   },[])
 
-  const getUsers = () => {
+/*   const getUsers = () => {
     axios
       .get(url_users)
       .then((response) => {
@@ -41,15 +41,13 @@ const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     getUsers()
-  },[])
+  },[]) */
 
   return (
-    <StoreProvider.Provider value= {{products,setProducts,users,setUsers}}>
+    <StoreContext.Provider value= {{products,setProducts}}>
         {children}
-    </StoreProvider.Provider>
+    </StoreContext.Provider>
   )
 
 };
 
-export default StoreProvider;
- */

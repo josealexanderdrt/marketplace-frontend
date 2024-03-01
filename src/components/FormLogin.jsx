@@ -54,7 +54,9 @@ const Formulary = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>
-        <Button className="boton rounded-button" variant="dark" type="submit">
+        <Button className="boton rounded-button" variant="dark" type="submit" onClick={() => {
+          navigate(`/profile`)
+        }}>
           Iniciar
         </Button>
         <Button
