@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
 import google_aut from "../../src/assets/image/google_aut.png";
-
 import "./FormLogin.css";
 import  {  ToastContainer ,  toast, Bounce }  from  'react-toastify' ; 
 import  'react-toastify/dist/ReactToastify.css' ;
@@ -14,7 +13,7 @@ import {StoreContext} from "../context/StoreContext"
 
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
-const Formulary = () => {
+const FormLogin = () => {
   const {users} = useContext(StoreContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -108,9 +107,7 @@ if (user) {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox"></Form.Group>
-        <Button className="boton rounded-button" variant="dark" type="submit" onClick={() => {
-          navigate(`/profile`)
-        }}>
+        <Button className="boton rounded-button" variant="dark" type="submit">
           Iniciar
         </Button>
         <Button
@@ -129,4 +126,4 @@ if (user) {
   );
 };
 
-export default Formulary;
+export default FormLogin;
