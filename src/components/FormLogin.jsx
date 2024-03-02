@@ -59,7 +59,7 @@ const FormLogin = () => {
     );
 
     if (user) {
-      navigate("/profile");
+      navigate("/profile/" + user.name);
     } else {
       toast.error("👀😢El email y la contraseña no coinciden", {
         position: "top-center",

@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 import { StoreContext } from "../context/StoreContext";
 import google_aut from "../../src/assets/image/google_aut.png";
 import "react-toastify/dist/ReactToastify.css";
-import { toast, Bounce } from "react-toastify";
+import { ToastContainer,toast, Bounce } from "react-toastify";
 import "./FormRegister.css";
 
 const FormRegister = () => {
@@ -27,7 +27,7 @@ const FormRegister = () => {
     if (!name || !rut || !email || !password || !address) {
       toast.error("Todos los campos son obligatorios", {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -40,10 +40,10 @@ const FormRegister = () => {
     }
 
     // Verificar si el correo electrónico ya está registrado
-    if (users.some((user) => user.email === email)) {
-      toast.error("El correo electrónico ya está registrado", {
+    if (users.some((user) => user.email === email || user.rut === rut)) {
+      toast.error("Rut o el correo ya existe en nuestra base de datos, verifique", {
         position: "top-center",
-        autoClose: 5000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -73,7 +73,7 @@ const FormRegister = () => {
     // Mostrar mensaje de éxito y redirigir al usuario
     toast.success("Te has registrado exitosamente", {
       position: "top-center",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -86,7 +86,7 @@ const FormRegister = () => {
     // Redirigir al usuario al inicio de sesión
     navigate("/auth_user");
   };
-  console.log(handleSubmit);
+  //console.log(handleSubmit);
   return (
     <Container className="box_daddy_form">
       <Button
@@ -169,6 +169,7 @@ const FormRegister = () => {
           Registrar
         </Button>
       </Form>
+      <ToastContainer />
     </Container>
   );
 };

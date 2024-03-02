@@ -13,7 +13,7 @@ const ConnectRoutes = () => {
       <R path="/" element={<Home />} /> {/* este es para el logo */}
       <R path="/auth_user" element={<Login/>} />{/* Para iniciar sesion */}
       <R path="/users" element={<Register />} /> {/* Para register  */}
-      <R path="/profile" element={<MyProfile />} /> {/* Aqui tenemos que ocupar params */}
+      <R path="/profile/:name" element={<MyProfile />} /> {/* Aqui tenemos que ocupar params */}
       <R path="/favorite" element={<MyFavorite />} /> {/* Aqui tenemos que ocupar params */}
       <R path="*" element={<NotFound />} /> {/* Por si ingresa alguna ruta mal */}
     </Rs>
