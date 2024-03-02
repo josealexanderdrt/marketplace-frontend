@@ -45,3 +45,8 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.custom-button {
+  width: 300px;
+  border-radius: 20px !important;
+}

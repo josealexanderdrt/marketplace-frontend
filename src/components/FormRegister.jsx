@@ -86,7 +86,7 @@ const FormRegister = () => {
     // Redirigir al usuario al inicio de sesión
     navigate("/auth_user");
   };
-  console.log(handleSubmit);
+
   return (
     <Container className="box_daddy_form">
       <Button

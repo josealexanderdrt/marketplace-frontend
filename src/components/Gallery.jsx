@@ -25,10 +25,18 @@ const Gallery = () => {
   return (
     <Container style={{ marginLeft: "4rem" }}>
       <div className="my_publication_favorite">
-        <Button variant="dark" onClick={() => navigate(`/profile`)}>
+        <Button
+          className="custom-button"
+          variant="dark"
+          onClick={() => navigate(`/profile/:id`)}
+        >
           Mis publicaciones
         </Button>
-        <Button variant="dark" onClick={() => navigate(`/favorite`)}>
+        <Button
+          className="custom-button"
+          variant="dark"
+          onClick={() => navigate(`/favorite`)}
+        >
           Mis Favoritos
         </Button>
       </div>
