@@ -9,8 +9,8 @@ const url_users = "/users.json";
 
 export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-   const [users, setUsers] = useState([]);
-
+  const [users, setUsers] = useState([]);
+  const [userId, setUserId] = useState(null);
 
   const getProducts = () => {
     axios
@@ -45,7 +45,7 @@ export const StoreProvider = ({ children }) => {
   },[])
 
   return (
-    <StoreContext.Provider value= {{products,setProducts, users, setUsers}}>
+    <StoreContext.Provider value= {{products,setProducts, users, setUsers,userId, setUserId}}>
         {children}
     </StoreContext.Provider>
   )

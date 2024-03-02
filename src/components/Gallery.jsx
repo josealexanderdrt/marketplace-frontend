@@ -7,7 +7,9 @@ import "./Gallery.css";
 
 const Gallery = () => {
   const navigate = useNavigate();
-  const { products, setProducts } = useContext(StoreContext);
+  const { products, setProducts, users } = useContext(StoreContext);
+  const userId = users.length > 0 ? users[0].id : null;
+  const userName = users.length > 0 ? users[0].name : "";
 
   const addFavorite = (id) => {
     const newProducts = products.map((product) => {
@@ -25,20 +27,24 @@ const Gallery = () => {
   return (
     <Container style={{ marginLeft: "4rem" }}>
       <div className="my_publication_favorite">
-        <Button
-          className="custom-button"
-          variant="dark"
-          onClick={() => navigate(`/profile/:id`)}
-        >
-          Mis publicaciones
-        </Button>
-        <Button
-          className="custom-button"
-          variant="dark"
-          onClick={() => navigate(`/favorite`)}
-        >
-          Mis Favoritos
-        </Button>
+        {userId && (
+          <>
+            <Button
+              className="custom-button"
+              variant="dark"
+              onClick={() => navigate(`/profile/${userId}`, { state: { userName } })}
+            >
+              Mis publicaciones
+            </Button>
+            <Button
+              className="custom-button"
+              variant="dark"
+              onClick={() => navigate(`/favorite/${userId}`, { state: { userName } })}
+            >
+              Mis Favoritos
+            </Button>
+          </>
+        )}
       </div>
       <div className="gallery grid-columns-5 p-3">
         {products.map((product, i) => (

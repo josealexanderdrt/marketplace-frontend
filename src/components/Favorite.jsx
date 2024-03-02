@@ -5,8 +5,7 @@ import IconHeart from "./IconHeart";
 import "./Favorite.css";
 import { useNavigate } from "react-router-dom";
 
-
-const Favorite = () => {
+const Favorite = ({ userId, userName }) => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(StoreContext);
 
@@ -30,10 +29,22 @@ const Favorite = () => {
   return (
     <Container style={{ marginLeft: "4rem" }}>
       <div className="my_publication_favorite">
-        <Button variant="dark" className="custom-button" onClick={() => navigate(`/profile`)}>
+        <Button
+          variant="dark"
+          className="custom-button"
+          onClick={() =>
+            navigate(`/profile/${userId}`, { state: { userName } })
+          }
+        >
           Mis publicaciones
         </Button>
-        <Button variant="dark" className="custom-button" onClick={() => navigate(`/favorite`)}>
+        <Button
+          variant="dark"
+          className="custom-button"
+          onClick={() =>
+            navigate(`/favorite/${userId}`, { state: { userName } })
+          }
+        >
           Mis Favoritos
         </Button>
       </div>

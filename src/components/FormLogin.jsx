@@ -13,11 +13,11 @@ import { StoreContext } from "../context/StoreContext";
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const FormLogin = () => {
-  const { users } = useContext(StoreContext);
+  const { users,setUserId } = useContext(StoreContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   /* const location = useLocation(); */
-/*   const { userName } = location.state || {}
+  /*   const { userName } = location.state || {}
   const { userId } = useParams(); */
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
@@ -60,10 +60,8 @@ const FormLogin = () => {
       (user) => user.email === email && user.password === password
     );
 
-    /*  if (user) {
-      navigate("/profile");
-      
-    } */ if (user) {
+    if (user) {
+      setUserId(user.id)
       navigate(`/profile/${user.id}`, { state: { userName: user.name } });
     } else {
       toast.error("👀😢El email y la contraseña no coinciden", {
