@@ -5,7 +5,11 @@ import IconHeart from "./IconHeart";
 import "./Favorite.css";
 import { useNavigate } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const Favorite = ({ userId, userName }) => {
+
+console.log("userId", userId)
+console.log("userName", userName)
   const navigate = useNavigate();
   const { products, setProducts } = useContext(StoreContext);
 
@@ -27,9 +31,11 @@ const Favorite = ({ userId, userName }) => {
   );
 
   return (
+    
     <Container style={{ marginLeft: "4rem" }}>
       <div className="my_publication_favorite">
         <Button
+        
           variant="dark"
           className="custom-button"
           onClick={() =>
@@ -41,9 +47,10 @@ const Favorite = ({ userId, userName }) => {
         <Button
           variant="dark"
           className="custom-button"
-          onClick={() =>
+          onClick={() =>  
             navigate(`/favorite/${userId}`, { state: { userName } })
           }
+          
         >
           Mis Favoritos
         </Button>
