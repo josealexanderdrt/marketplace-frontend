@@ -14,9 +14,11 @@ const Catalogue = () => {
           <img className="d-flex w-100" src={aPic} alt="first Image" />
           <Carousel.Caption>
             <div className="divgotoproductusbutton">
-              <Button variant="outline-light" className="gotoproductusbutton">
-                Ir a Productos
-              </Button>
+              <a href="#productos">
+                <Button variant="outline-light" className="gotoproductusbutton">
+                  Ir a Productos
+                </Button>
+              </a>
             </div>
           </Carousel.Caption>
         </Carousel.Item>
