@@ -18,7 +18,7 @@ const Navigation = () => {
             {/* <img src={userIcon} alt="user" className="user_icon" /> */}
             <span>{user.name}</span>
             <button
-              onClick={() => logout({ returnTo: "http://localhost:5173/" })}
+              onClick={() => logout({ returnTo: "/" })}
             >
               Cerrar sesión
             </button>

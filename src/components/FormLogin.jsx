@@ -62,6 +62,7 @@ const FormLogin = () => {
 
     if (user) {
       setUserId(user.id)
+      localStorage.setItem("userName", user.name);
       navigate(`/profile/${user.id}`, { state: { userName: user.name } });
     } else {
       toast.error("👀😢El email y la contraseña no coinciden", {
