@@ -1,4 +1,3 @@
-/* import React, {useState} from 'react' */
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
@@ -17,9 +16,6 @@ const FormLogin = () => {
   const { users,setUserId } = useContext(StoreContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  /* const location = useLocation(); */
-  /*   const { userName } = location.state || {}
-  const { userId } = useParams(); */
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
 
@@ -63,6 +59,7 @@ const FormLogin = () => {
 
     if (user) {
       setUserId(user.id)
+      localStorage.setItem("userName", user.name);
       navigate(`/profile/${user.id}`, { state: { userName: user.name } });
     } else {
       toast.error("👀😢El email y la contraseña no coinciden", {
