@@ -10,8 +10,8 @@ const MyProfile = () => {
 /*   const location = useLocation();
   const userName = location.state?.userName || "Usuario Desconocido"; */
   const { userId,users } = useContext(StoreContext);
-  console.log("StoreContext",StoreContext)
-  console.log("usersId",userId)
+  //console.log("StoreContext",StoreContext)
+  //console.log("usersId",userId)
  
   const user = users.find(
     (user) => user.id === userId 
