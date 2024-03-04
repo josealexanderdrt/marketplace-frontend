@@ -1,4 +1,3 @@
-/* import React, {useState} from 'react' */
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
@@ -16,9 +15,6 @@ const FormLogin = () => {
   const { users,setUserId } = useContext(StoreContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  /* const location = useLocation(); */
-  /*   const { userName } = location.state || {}
-  const { userId } = useParams(); */
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
 

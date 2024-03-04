@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
     return(
-        <Link to="*" className="notfound_style"><h2>Direccion de url no encontrada😪, Introduza bien la ruta</h2></Link>
+        <Link to="/" className="notfound_style"><h2>404 NOT FOUND </h2></Link>
+      
     )
 }
 

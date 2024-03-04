@@ -5,11 +5,8 @@ import IconHeart from "./IconHeart";
 import "./Favorite.css";
 import { useNavigate } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
-const Favorite = ({ userId, userName }) => {
 
-console.log("userId", userId)
-console.log("userName", userName)
+const Favorite = ({ userId, userName }) => {
   const navigate = useNavigate();
   const { products, setProducts } = useContext(StoreContext);
 

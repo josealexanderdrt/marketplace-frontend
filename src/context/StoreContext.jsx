@@ -17,7 +17,9 @@ export const StoreProvider = ({ children }) => {
       .get(url_products)
       .then((response) => {
         const { products: productsDB } = response.data;
-        setProducts(productsDB.map((product)=> ({ ...product, isFavorite: false})));
+        setProducts(
+          productsDB.map((product) => ({ ...product, isFavorite: false }))
+        );
       })
       .catch((error) => {
         console.error("You did not obtain the requested data:", error);
@@ -25,8 +27,8 @@ export const StoreProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getProducts()
-  },[])
+    getProducts();
+  }, []);
 
   const getUsers = () => {
     axios
@@ -41,14 +43,14 @@ export const StoreProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getUsers()
-  },[])
+    getUsers();
+  }, []);
 
   return (
-    <StoreContext.Provider value= {{products,setProducts, users, setUsers,userId, setUserId}}>
-        {children}
+    <StoreContext.Provider
+      value={{ products, setProducts, users, setUsers, userId, setUserId }}
+    >
+      {children}
     </StoreContext.Provider>
-  )
-
+  );
 };
-
