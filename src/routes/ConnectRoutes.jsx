@@ -6,16 +6,20 @@ import Login from "../views/Login";
 import Register from "../views/Register";
 import MyProfile from "../views/MyProfile";
 import MyFavorite from "../views/MyFavorite";
+import AddProduct from "../views/AddProduct"
+import AllproductsComponent from "../components/AllproductsComponent";
 
 const ConnectRoutes = () => {
   return (
     <Rs>
-      <R path="/" element={<Home />} /> {/* este es para el logo */}
-      <R path="/auth_user" element={<Login/>} />{/* Para iniciar sesion */}
-      <R path="/users" element={<Register />} /> {/* Para register  */}
-      <R path="/profile/:id" element={<MyProfile />} /> {/* Aqui tenemos que ocupar params */}
-      <R path="/favorite/:id" element={<MyFavorite />} /> {/* Aqui tenemos que ocupar params */}
-      <R path="*" element={<NotFound />} /> {/* Por si ingresa alguna ruta mal */}
+      <R path="/" element={<Home />} /> 
+      <R path="/auth_user" element={<Login/>} />
+      <R path="/users" element={<Register />} /> 
+      <R path="/profile/:id" element={<MyProfile />} /> 
+      <R path="/favorite/:id" element={<MyFavorite />} />
+      <R path="*" element={<NotFound />} /> 
+      <R path="/addproduct" element={<AddProduct />} /> 
+      <R path="/allproducts" element={<AllproductsComponent />} /> 
     </Rs>
   );
 };

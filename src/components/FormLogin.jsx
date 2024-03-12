@@ -9,11 +9,12 @@ import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
 import { StoreContext } from "../context/StoreContext";
+import { login } from "../components/services/loginService.js";
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const FormLogin = () => {
 
-  const { users,setUserId } = useContext(StoreContext);
+  const { users,setUserId, setUsername } = useContext(StoreContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loginWithRedirect } = useAuth0();
@@ -53,16 +54,28 @@ const FormLogin = () => {
       return;
     }
 
-    const user = users.find(
-      (user) => user.email === email && user.password === password
-    );
+    const userLogin = {
+      user:{
+        email:email,
+        password: password
+      }
+    }
 
-    if (user) {
-      setUserId(user.id)
-      localStorage.setItem("userName", user.name);
-      navigate(`/profile/${user.id}`, { state: { userName: user.name } });
-    } else {
-      toast.error("👀😢El email y la contraseña no coinciden", {
+    const user = login(userLogin)
+    .then((response)=>{
+        if (!response.code && response.code !=200) {
+          console.log("errorr");
+          throw new Error(response.error);
+      }
+      console.log(" Respuesta ",response)
+      setUserId(response.id_user)
+      setUsername(response.name)
+      localStorage.setItem("token", response.token);
+      navigate(`/profile/${response.id_user}`, { state: { userName: response.name } });
+    }
+
+    ).catch((error)=>{
+      toast.error("👀😢"+error, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -74,6 +87,10 @@ const FormLogin = () => {
         transition: Bounce,
       });
     }
+
+    );
+    console.log("user res",user);
+   
   };
 
   return (

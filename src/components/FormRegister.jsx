@@ -7,8 +7,9 @@ import { Container } from "react-bootstrap";
 import { StoreContext } from "../context/StoreContext";
 import google_aut from "../../src/assets/image/google_aut.png";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer,toast, Bounce } from "react-toastify";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 import "./FormRegister.css";
+import { signup } from "./services/signup.js";
 
 const FormRegister = () => {
   const { users, setUsers } = useContext(StoreContext);
@@ -41,9 +42,51 @@ const FormRegister = () => {
 
     // Verificar si el correo electrónico ya está registrado
     if (users.some((user) => user.email === email || user.rut === rut)) {
-      toast.error("Rut o el correo ya existe en nuestra base de datos, verifique", {
+      toast.error(
+        "Rut o el correo ya existe en nuestra base de datos, verifique",
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        }
+      );
+      return;
+    }
+
+    // Agregar nuevo usuario
+    const newUser = {
+      user: {
+        name: name,
+        rut: rut,
+        email: email,
+        password: password,
+        address: address,
+        url_icons: "dd",
+      },
+    };
+
+    setUsers([...users, newUser]);
+
+    const signupupUser = signup(newUser).then((response) => {
+      
+      if(response.userCreated){
+        navigate(`/auth_user`, {
+          state: { userName: response.name },
+        })
+      }else{
+         throw Error("Error al registrar usuario.")
+      }
+    }
+    ).catch((error)=>{
+      toast.error("👀😢"+error, {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -51,24 +94,8 @@ const FormRegister = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-      });
-      return;
-    }
-
-    // Agregar nuevo usuario
-    const newUser = {
-      id: users.length + 1,
-      name: name,
-      rut: rut,
-      email: email,
-      password: password,
-      address: address,
-      role: "user",
-      icons_url: "",
-      auth_google: "",
-    };
-
-    setUsers([...users, newUser]);
+      });}
+      );
 
     // Mostrar mensaje de éxito y redirigir al usuario
     toast.success("Te has registrado exitosamente", {

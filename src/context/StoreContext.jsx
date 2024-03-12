@@ -1,25 +1,23 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { productsGet } from "../components/services/productGet.js";
+let token = localStorage.getItem("token");
+console.log("token: ", token);
 
 export const StoreContext = createContext();
 
-// Consume json for testing , replace by backend URL
-const url_products = "/products.json";
-const url_users = "/users.json";
 
 export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [myProducts, setMyProducts] = useState([]);
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState(null);
+  const [username, setUsername] = useState(null);
 
-  const getProducts = () => {
-    axios
-      .get(url_products)
-      .then((response) => {
-        const { products: productsDB } = response.data;
-        setProducts(
-          productsDB.map((product) => ({ ...product, isFavorite: false }))
-        );
+  const getMyProducts = () => {
+    const myProductsResp = productsGet(token)
+      .then((products) => {
+        setMyProducts(products.products.map((product) => ({ ...product })));
       })
       .catch((error) => {
         console.error("You did not obtain the requested data:", error);
@@ -27,28 +25,24 @@ export const StoreProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getProducts();
-  }, []);
-
-  const getUsers = () => {
-    axios
-      .get(url_users)
-      .then((response) => {
-        const { users } = response.data;
-        setUsers(users);
-      })
-      .catch((error) => {
-        console.error("You did not obtain the requested data:", error);
-      });
-  };
-
-  useEffect(() => {
-    getUsers();
+    getMyProducts();
   }, []);
 
   return (
     <StoreContext.Provider
-      value={{ products, setProducts, users, setUsers, userId, setUserId }}
+      value={{
+        products,
+        setProducts,
+        users,
+        setUsers,
+        userId,
+        setUserId,
+        username,
+        setUsername,
+        myProducts,
+        setMyProducts,
+        getMyProducts,
+      }}
     >
       {children}
     </StoreContext.Provider>

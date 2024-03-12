@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import cubos from "../../src/assets/image/cubos.png";
-/* import userIcon from "../../src/assets/image/userIcon.png"; */ // Importa tu icono de usuario aquí
-import { useAuth0 } from "@auth0/auth0-react"; // Importa el hook de autenticación de Auth0
+import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
+import { useContext } from "react";
+import { StoreContext } from "../context/StoreContext";
 
 const Navigation = () => {
-  const { isAuthenticated, user, logout } = useAuth0(); // Obtiene el estado de autenticación y la información del usuario
-
+  const { username, userId } = useContext(StoreContext);
+  const { isAuthenticated, user, logout } = useAuth0();
   return (
     <nav className="nav_style">
       <Link to="/">
@@ -17,11 +18,29 @@ const Navigation = () => {
           <>
             {/* <img src={userIcon} alt="user" className="user_icon" /> */}
             <span>{user.name}</span>
-            <button
-              onClick={() => logout({ returnTo: "/" })}
-            >
+            <button onClick={() => logout({ returnTo: "/" })}>
               Cerrar sesión
             </button>
+          </>
+        ) : username ? ( // Si el usuario está autenticado
+          <>
+            {/* <img src={userIcon} alt="user" className="user_icon" /> */}
+            <span>{username}</span>
+            <button onClick={() => logout({ returnTo: "/" })}>
+              Cerrar sesión
+            </button>
+
+            <Link to="/addproduct">
+              <button>Publicar Producto</button>
+            </Link>
+
+            <Link to={`/profile/${userId}`}>
+              <button>Mi perfil</button>
+            </Link>
+
+            <Link to={"/allproducts"}>
+              <button>All</button>
+            </Link>
           </>
         ) : (
           <>

@@ -9,7 +9,13 @@
  div.carousel-indicators{
 padding: 150px;
   }
+.linkText {
+  text-decoration: none;
+  color: inherit;
+  
 
+}
+  
 
   .divgotoproductusbutton{
 

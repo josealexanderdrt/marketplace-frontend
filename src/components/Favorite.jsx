@@ -6,13 +6,13 @@ import "./Favorite.css";
 import { useNavigate } from "react-router-dom";
 
 
-const Favorite = ({ userId, userName }) => {
+const Favorite = ({ userId }) => {
   const navigate = useNavigate();
-  const { products, setProducts } = useContext(StoreContext);
+  const { myProducts, setMyProducts} = useContext(StoreContext);
 
   const removeFavorite = (id) => {
-    const newProducts = products.map((product) => {
-      if (product.id === id) {
+    const newProducts = myProducts.map((product) => {
+      if (product.id_product === id) {
         return {
           ...product,
           isFavorite: !product.isFavorite,
@@ -20,10 +20,10 @@ const Favorite = ({ userId, userName }) => {
       }
       return product;
     });
-    setProducts(newProducts);
+    setMyProducts(newProducts);
   };
 
-  const productsLiked = products.filter(
+  const productsLiked = myProducts.filter(
     (filters) => filters.isFavorite === true
   );
 
@@ -31,47 +31,46 @@ const Favorite = ({ userId, userName }) => {
     
     <Container style={{ marginLeft: "4rem" }}>
       <div className="my_publication_favorite">
-        <Button
-        
-          variant="dark"
-          className="custom-button"
-          onClick={() =>
-            navigate(`/profile/${userId}`, { state: { userName } })
-          }
-        >
-          Mis publicaciones
-        </Button>
-        <Button
-          variant="dark"
-          className="custom-button"
-          onClick={() =>  
-            navigate(`/favorite/${userId}`, { state: { userName } })
-          }
-          
-        >
-          Mis Favoritos
-        </Button>
+        {userId && (
+          <>
+            <Button
+              className="custom-button"
+              variant="dark"
+              onClick={() => navigate(`/profile/${userId}` )}
+            >
+              Mis publicaciones Copia
+            </Button>
+            <Button
+              className="custom-button"
+              variant="dark"
+              onClick={() => navigate(`/favorite/${userId}`)}
+            >
+              Mis Favoritos s
+            </Button>
+          </>
+        )}
       </div>
+     
+     
       <div className="gallery grid-columns-5 p-3">
         {productsLiked.map((product, i) => (
           <Card
             key={i}
             className="photo"
-            onClick={() => removeFavorite(product.id)}
+            onClick={() => removeFavorite(product.id_product)}
             style={{ width: "16rem" }}
           >
             <Card.Img
               variant="top"
-              src={product.url}
+              src={product.url_image
+              }
               style={{ width: "100%", height: "200px", objectFit: "cover" }}
             />
             <Card.Body>
               <IconHeart className="border_heart" filled={product.isFavorite} />
-              <Card.Title>{product.name}</Card.Title>
+              <Card.Title>{product.name_product}</Card.Title>
               <Card.Text>{product.description}</Card.Text>
-              <Button variant="dark" className="w-100">
-                {product.price}
-              </Button>
+              
             </Card.Body>
           </Card>
         ))}
