@@ -13,6 +13,7 @@ export const StoreProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState(null);
   const [username, setUsername] = useState(null);
+const [productDescription, setproductDescription] =useState({});
 
   const getMyProducts = () => {
     const myProductsResp = productsGet(token)
@@ -42,6 +43,8 @@ export const StoreProvider = ({ children }) => {
         myProducts,
         setMyProducts,
         getMyProducts,
+        productDescription, 
+        setproductDescription,
       }}
     >
       {children}

@@ -8,6 +8,7 @@ import MyProfile from "../views/MyProfile";
 import MyFavorite from "../views/MyFavorite";
 import AddProduct from "../views/AddProduct"
 import AllproductsComponent from "../components/AllproductsComponent";
+import DetailProductComponent from "../views/DetailProductComponent";
 
 const ConnectRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const ConnectRoutes = () => {
       <R path="*" element={<NotFound />} /> 
       <R path="/addproduct" element={<AddProduct />} /> 
       <R path="/allproducts" element={<AllproductsComponent />} /> 
+      {<R path="/allproducts/:id" element={<DetailProductComponent />} /> }
     </Rs>
   );
 };
