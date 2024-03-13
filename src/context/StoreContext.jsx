@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { productsGet } from "../components/services/productGet.js";
 let token = localStorage.getItem("token");
