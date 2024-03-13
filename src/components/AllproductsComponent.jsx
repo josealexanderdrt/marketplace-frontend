@@ -73,11 +73,13 @@ const AllproductsComponent = () => {
               <Card.Body>
                 <IconHeart className="border_heart" filled={product.isFavorite} />
                 <Card.Title>{product.name_product}</Card.Title>
+                <Card.Text>Precio:$ {product.price}</Card.Text>
                 <Card.Text>{product.description}</Card.Text>
                 <div>
                   <Badge variant="dark">{product.name}</Badge>
                 </div>
                 <Button variant="dark" onClick={() =>  addFavoriteOnClick(product.id_product)}>Agregar a favoritos</Button>
+                <Button variant="dark" onClick={() => {navigate(`/allproducts/${product.id_product}`)}} style={{ margin: '20px', width: '10rem' }}>Ver detalles</Button>
               </Card.Body>
               <ToastContainer />
             </Card>
