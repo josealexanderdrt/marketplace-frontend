@@ -9,7 +9,7 @@ import { ToastContainer, toast, Bounce } from "react-toastify";
 
 const AllproductsComponent = () => {
   const navigate = useNavigate();
-  const { myProducts, setMyProducts, userId } = useContext(StoreContext);
+  const { myProducts, setMyProducts, userId, } = useContext(StoreContext);
   const [filter, setFilter] = useState("");
 
   const handleFilterChange = (e) => {
@@ -73,8 +73,9 @@ const AllproductsComponent = () => {
               <Card.Body>
                 <IconHeart className="border_heart" filled={product.isFavorite} />
                 <Card.Title>{product.name_product}</Card.Title>
-                <Card.Text>Precio:$ {product.price}</Card.Text>
+                <Card.Text><strong>Precio:${product.price}</strong></Card.Text>
                 <Card.Text>{product.description}</Card.Text>
+                <Card.Text><strong>publicado por:{product.username}</strong></Card.Text>
                 <div>
                   <Badge variant="dark">{product.name}</Badge>
                 </div>
