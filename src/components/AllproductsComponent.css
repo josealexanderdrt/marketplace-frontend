@@ -1,0 +1,31 @@
+.input_filter_namebrand{
+    display: flex;
+    gap: 1rem;
+}
+
+.filter_price{
+    display: flex;
+    gap: 1rem;
+}
+
+.container{
+    display: flex;.
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input_filter{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    gap:2rem;
+   
+}
+
+.boton{
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+    
+}
