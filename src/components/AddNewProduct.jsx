@@ -24,6 +24,7 @@ const AddNewProduct = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [state, setState] = useState("");
   const [url_image, setUrl_image] = useState("");
   const [id_user, setId_user] = useState("");
   const [id_categories, setId_categories] = useState("");
@@ -35,7 +36,7 @@ const AddNewProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!name || !description || !price || !quantity || !url_image  || !id_categories || !id_brand) {
+    if (!name || !description || !price || !quantity || !state || !url_image  || !id_categories || !id_brand) {
       toast.error("Todos los campos son obligatorios", {
         position: "top-center",
         autoClose: 3000,
@@ -57,6 +58,7 @@ const AddNewProduct = () => {
       description: description,
       price: price,
       quantity: quantity,
+      state: state,
       url_image: url_image,
       id_user: userId,
       id_categories: id_categories,
@@ -155,6 +157,15 @@ const AddNewProduct = () => {
             value={quantity}
           />
         </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicState">
+          <Form.Label>Estado</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Estado"
+            onChange={(e) => setState(e.target.value)}
+            value={state}
+          />
+        </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicAddress">
           <Form.Label>URL Imagen</Form.Label>
@@ -192,7 +203,7 @@ const AddNewProduct = () => {
           variant="dark mt-2"
           type="submit"
         >
-          Registrar
+          Publicar
         </Button>
       </Form>
       <ToastContainer />
