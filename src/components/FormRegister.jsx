@@ -128,7 +128,7 @@ const FormRegister = () => {
         }
       >
         <img className="icons_google_aut" src={google_aut} alt="aut-google" />{" "}
-        Sign in with Google
+        Inicia sesión con Google
       </Button>
       <hr className="vertical_line" />
       <Form
@@ -136,7 +136,7 @@ const FormRegister = () => {
         onSubmit={handleSubmit}
       >
         <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Nombre</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter name"
@@ -156,7 +156,7 @@ const FormRegister = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Correo</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -169,7 +169,7 @@ const FormRegister = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Contraseña</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -179,7 +179,7 @@ const FormRegister = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicAddress">
-          <Form.Label>Address</Form.Label>
+          <Form.Label>Dirección</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter address"

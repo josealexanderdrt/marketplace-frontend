@@ -117,7 +117,7 @@ const AddNewProduct = () => {
         onSubmit={handleSubmit}
       >
         <Form.Group className="mb-3" controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Nombre</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter dopiaaname"
@@ -127,7 +127,7 @@ const AddNewProduct = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicRut">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Descripción</Form.Label>
           <Form.Control
             type="text"
             placeholder="Description"
@@ -137,7 +137,7 @@ const AddNewProduct = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Price</Form.Label>
+          <Form.Label>Precio</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter price"
@@ -147,7 +147,7 @@ const AddNewProduct = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Quantity</Form.Label>
+          <Form.Label>Cantidad</Form.Label>
           <Form.Control
             type="number"
             placeholder="Enter quantity"
@@ -157,7 +157,7 @@ const AddNewProduct = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicAddress">
-          <Form.Label>URL Image</Form.Label>
+          <Form.Label>URL Imagen</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter URL image"
@@ -168,20 +168,20 @@ const AddNewProduct = () => {
 
        
         <Form.Group className="mb-3" controlId="formBasicAddress">
-          <Form.Label>ID Categories</Form.Label>
+          <Form.Label>Categoria</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter ID categories"
+            placeholder="Enter categories"
             onChange={(e) => setId_categories(e.target.value)}
             value={id_categories}
           />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicAddress">
-          <Form.Label>ID Brand</Form.Label>
+          <Form.Label>Marca</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter ID brand"
+            placeholder="Enter brand"
             onChange={(e) => setId_brand(e.target.value)}
             value={id_brand}
           />
