@@ -1,60 +1,132 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import cubos from "../../src/assets/image/cubos.png";
+import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
 import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
+import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
+import {
+  FaArrowRightFromBracket,
+  FaUpload,
+  FaUserLarge,
+  FaGlobe,
+  FaCirclePlus,
+  FaPhotoFilm,
+  FaHeartCircleCheck,
+} from "react-icons/fa6";
 
 const Navigation = () => {
   const { username, userId } = useContext(StoreContext);
   const { isAuthenticated, user, logout } = useAuth0();
+
+  let imageToShow;
+  if (userId === null) {
+    imageToShow = cubos;
+  } else {
+    imageToShow = cubosLoggedIn;
+  }
+
   return (
-    <nav className="nav_style">
-      <Link to="/">
-        <img className="cubos1" src={cubos} alt="cubos" />
-      </Link>
-      <div className="register_login">
-        {isAuthenticated ? ( // Si el usuario está autenticado
-          <>
-            {/* <img src={userIcon} alt="user" className="user_icon" /> */}
-            <span>{user.name}</span>
-            <button onClick={() => logout({ returnTo: "/" })}>
-              Cerrar sesión
-            </button>
-          </>
-        ) : username ? ( // Si el usuario está autenticado
-          <>
-            {/* <img src={userIcon} alt="user" className="user_icon" /> */}
-            <span>{username}</span>
-            <button onClick={() => logout({ returnTo: "/" })}>
-              Cerrar sesión
-            </button>
+    <Navbar expand="lg" className="bg-body-tertiary navbarLam" bg="light" data-bs-theme="light">
+      <Container>
+        <Navbar.Brand>
+          <Link to="/">
+            <Image
+              className="cubos1"
+              src={imageToShow}
+              alt="cubos"
+              roundedCircle
+            />
+          </Link>
+        </Navbar.Brand>
 
-            <Link to="/addproduct">
-              <button>Publicar Producto</button>
-            </Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Collapse id="basic-navbar-nav" >
+      
+          <Nav className="ms-auto">
+            
+            {isAuthenticated ? (
+              <>
+                <Navbar.Text>
+                  {user.name} <FaUserLarge />
+                </Navbar.Text>
 
-            <Link to={`/profile/${userId}`}>
-              <button>Mi perfil</button>
-            </Link>
+                <Nav.Link
+                  onClick={() => logout({ returnTo: "/" })}
+                  title="Salir"
+                >
+                  <FaArrowRightFromBracket />
+                </Nav.Link>
+              </>
+            ) : username ? (
+              <>
+                <Nav.Link
+                  as={Link}
+                  to="/allproducts"
+                  title="Todos los Productos"
+                >
+                  <FaGlobe />
+                </Nav.Link>
 
-            <Link to={"/allproducts"}>
-              <button>All</button>
-            </Link>
-          </>
-        ) : (
-          <>
-            <Link className="access_nav" to="/auth_user">
-              Iniciar sesión
-            </Link>{" "}
-            |{" "}
-            <Link className="register_nav" to="/users">
-              Registrar
-            </Link>
-          </>
-        )}
-      </div>
-    </nav>
+                <Nav.Link
+                  as={Link}
+                  to="/addproduct"
+                  title="Hacer una nueva Publicación"
+                >
+                  <FaCirclePlus />
+                </Nav.Link>
+
+                <Nav.Link as={Link} to={`/profile/${userId}`} title="Mi Perfil">
+                  <FaUserLarge />
+                </Nav.Link>
+
+                <Nav.Link
+                  as={Link}
+                  onClick={() => logout({ returnTo: "/" })}
+                  title="Salir"
+                >
+                  <FaArrowRightFromBracket />
+                </Nav.Link>
+                <NavDropdown title={username} id="basic-nav-dropdown">
+                  <NavDropdown.Item as={Link} to={`/profile/${userId}`}>
+                    <FaUserLarge /> Mi perfil
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to={`/profile/${userId}`}>
+                    <FaPhotoFilm />
+                    Mis Publicaciones
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to={`/favorite/${userId}`}>
+                    <FaHeartCircleCheck /> Mis Favoritos
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/addproduct">
+                    <FaCirclePlus /> Publicar Producto
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item as={Link} to="/allproducts">
+                    <FaGlobe /> Todos los Productos
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </>
+            ) : (
+              <>
+       
+                <Nav.Link as={Link} to="/auth_user">
+                  Iniciar sesión
+                </Nav.Link>
+
+                <Nav.Link as={Link} to="/users">
+                  Registrar
+                </Nav.Link>
+              
+              </>
+            )}
+           
+          </Nav>
+       
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
