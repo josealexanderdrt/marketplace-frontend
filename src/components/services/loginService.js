@@ -1,7 +1,6 @@
 // Reemplazar por la URL de la API
 const URL_API = "http://localhost:3000/api/v1/auth_user";
-import axios from "axios";
-import NotFound from "../../views/NotFound"
+
 
 
 export const login = async (post) => {
