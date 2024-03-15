@@ -1,8 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import AddNewProduct from "../components/AddNewProduct.jsx";
+import PreviewProduct from "../components/PreviewProduct.jsx";
 import { addPost } from "../components/services/postService.js";
 import { ToastContainer, toast, Bounce } from "react-toastify";
+import { Container } from "react-bootstrap";
 
 const AddProduct = () => {
   const [posts, setPosts] = useState([]);
@@ -39,11 +41,11 @@ const AddProduct = () => {
   };
 
   return (
-    <div>
+   <>
       <AddNewProduct createProduct={createProduct} />
 
       <ToastContainer />
-    </div>
+      </>
   );
 };
 
