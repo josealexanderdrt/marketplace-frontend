@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import { ToastContainer, toast } from "react-toastify";
 import "../components/AllproductsComponent.css";
+//import Footerlam from "../components/Footerlam.jsx";
 
 const AllproductsComponent = () => {
   const navigate = useNavigate();
@@ -131,48 +132,55 @@ const AllproductsComponent = () => {
           Limpiar Filtros
         </Button>
       }
-      <div className="row row-cols-1 row-cols-md-3 justify-content-center">
-        {filteredProducts.map((product, index) => (
-          <div key={index} className="col mb-4">
-            <Card style={{ width: "18rem" }} className="h-100 mx-auto">
-              <Card.Img variant="top" src={product.url_image} />
-              <Card.Body>
-                <IconHeart
-                  className="border_heart"
-                  filled={product.isFavorite}
-                />
-                <Card.Title>{product.name_product}</Card.Title>
-                <Card.Text>
-                  <strong>Precio: ${product.price}</strong>
-                </Card.Text>
-                <Card.Text>
-                  <strong>Marca: {product.name_brand}</strong>
-                </Card.Text>
-                <Card.Text>{product.description}</Card.Text>
-                <Card.Text>
-                  <strong>Publicado por: {product.username}</strong>
-                </Card.Text>
-                <div>
-                  <Badge variant="dark">{product.name}</Badge>
-                </div>
-                <Button
-                  variant="dark"
-                  onClick={() => addFavoriteOnClick(product.id_product)}
-                >
-                  Agregar a favoritos
-                </Button>
-                <Button
-                  variant="dark"
-                  onClick={() => navigate(`/allproducts/${product.id_product}`)}
-                  style={{ margin: "20px", width: "10rem" }}
-                >
-                  Ver detalles
-                </Button>
-              </Card.Body>
-              <ToastContainer />
-            </Card>
-          </div>
-        ))}
+       <div /* className="content" */>
+        <div className="row row-cols-1 row-cols-md-3 justify-content-center">
+          {filteredProducts.map((product, index) => (
+            <div key={index} className="col mb-4">
+              <Card style={{ width: "18rem" }} className="h-100 mx-auto">
+                <Card.Img variant="top" src={product.url_image} />
+                <Card.Body>
+                  <IconHeart
+                    className="border_heart"
+                    filled={product.isFavorite}
+                  />
+                  <Card.Title>{product.name_product}</Card.Title>
+                  <Card.Text>
+                    <strong>Precio: ${product.price}</strong>
+                  </Card.Text>
+                  <Card.Text>
+                    <strong>Marca: {product.name_brand}</strong>
+                  </Card.Text>
+                  <Card.Text>{product.description}</Card.Text>
+                  <Card.Text>
+                    <strong>Publicado por: {product.username}</strong>
+                  </Card.Text>
+                  <div>
+                    <Badge variant="dark">{product.name}</Badge>
+                  </div>
+                  <Button
+                    variant="dark"
+                    onClick={() => addFavoriteOnClick(product.id_product)}
+                  >
+                    Agregar a favoritos
+                  </Button>
+                  <Button
+                    variant="dark"
+                    onClick={() =>
+                      navigate(`/allproducts/${product.id_product}`)
+                    }
+                    style={{ margin: "20px", width: "10rem" }}
+                  >
+                    Ver detalles
+                  </Button>
+                </Card.Body>
+                <ToastContainer />
+              </Card>
+             
+            </div>
+          ))}
+           
+        </div>
+       {/*  <Footerlam /> */}
       </div>
     </div>
   );

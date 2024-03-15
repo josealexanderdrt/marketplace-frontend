@@ -38,14 +38,14 @@ const Favorite = ({ userId }) => {
               variant="dark"
               onClick={() => navigate(`/profile/${userId}` )}
             >
-              Mis publicaciones Copia
+              Mis publicaciones 
             </Button>
             <Button
               className="custom-button"
               variant="dark"
               onClick={() => navigate(`/favorite/${userId}`)}
             >
-              Mis Favoritos s
+              Mis Favoritos 
             </Button>
           </>
         )}
