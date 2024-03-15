@@ -2,13 +2,13 @@ import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+//import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
 import { StoreContext } from "../context/StoreContext";
 import { productAdd } from "./services/productAdd";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import google_aut from "../../src/assets/image/google_aut.png";
+//import google_aut from "../../src/assets/image/google_aut.png";
 import "./FormRegister.css";
 
 
@@ -17,7 +17,7 @@ const AddNewProduct = () => {
 
   const { getMyProducts} = useContext(StoreContext);
 
-  const { myProducts, setMyProducts,  } = useContext(StoreContext);
+  const { myProducts, setMyProducts } = useContext(StoreContext);
   const { userId } = useContext(StoreContext);
   
   const [name, setName] = useState("");
@@ -72,6 +72,7 @@ const AddNewProduct = () => {
     productAdd(nuevoProducto)
       .then((response) => {
         if (response.newProduct) {
+          console.log("response.newProduct", response.newProduct)
           toast.success("Producto registrado exitosamente", {
             position: "top-center",
             autoClose: 3000,
