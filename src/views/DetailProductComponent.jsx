@@ -1,13 +1,15 @@
 
 import { useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { StoreContext } from "../context/StoreContext";
+//import { StoreContext } from "../context/StoreContext";
+import {ProductContext } from "../context/ProductContext";
 import { Container, Button } from "react-bootstrap";
 import "../views/Detail.css";
 
 const DetailProductComponent = () => {
     const navigate = useNavigate();
-    const { myProducts, productDescription, setproductDescription } = useContext(StoreContext);
+    //const { myProducts, productDescription, setproductDescription } = useContext(StoreContext);
+    const { myProducts, productDescription, setproductDescription } = useContext(ProductContext);
     const { id } = useParams();
 
     useEffect(() => {

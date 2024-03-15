@@ -8,13 +8,15 @@ import "./FormLogin.css";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
-import { StoreContext } from "../context/StoreContext";
+//import { StoreContext } from "../context/StoreContext";
 import { login } from "../components/services/loginService.js";
+import { UserContext } from "../context/UserContext.jsx";
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const FormLogin = () => {
 
-  const { users,setUserId, setUsername } = useContext(StoreContext);
+  //const { users,setUserId, setUsername } = useContext(StoreContext);
+  const { users,setUserId, setUsername } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loginWithRedirect } = useAuth0();

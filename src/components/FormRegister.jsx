@@ -4,15 +4,17 @@ import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
-import { StoreContext } from "../context/StoreContext";
+//import { StoreContext } from "../context/StoreContext";
 import google_aut from "../../src/assets/image/google_aut.png";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "./FormRegister.css";
 import { signup } from "./services/signup.js";
+import { UserContext } from "../context/UserContext";
 
 const FormRegister = () => {
-  const { users, setUsers } = useContext(StoreContext);
+  //const { users, setUsers } = useContext(StoreContext);
+  const { users, setUsers } = useContext(UserContext);
   const [name, setName] = useState("");
   const [rut, setRut] = useState("");
   const [email, setEmail] = useState("");

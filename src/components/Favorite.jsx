@@ -1,14 +1,16 @@
 import { useContext } from "react";
-import { StoreContext } from "../context/StoreContext";
+//import { StoreContext } from "../context/StoreContext";
 import { Container, Card, Button } from "react-bootstrap";
 import IconHeart from "./IconHeart";
 import "./Favorite.css";
 import { useNavigate } from "react-router-dom";
+import { ProductContext } from "../context/ProductContext";
 
 
 const Favorite = ({ userId }) => {
   const navigate = useNavigate();
-  const { myProducts, setMyProducts} = useContext(StoreContext);
+  //const { myProducts, setMyProducts} = useContext(StoreContext);
+  const { myProducts, setMyProducts} = useContext(ProductContext);
 
   const removeFavorite = (id) => {
     const newProducts = myProducts.map((product) => {

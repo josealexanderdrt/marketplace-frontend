@@ -1,14 +1,18 @@
 import { useContext, useEffect } from "react";
-import { StoreContext } from "../context/StoreContext";
+//import { StoreContext } from "../context/StoreContext";
 import { Container, Card, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import "./Gallery.css";
+import { UserContext } from "../context/UserContext";
+import { ProductContext } from "../context/ProductContext";
 
 
 const Gallery = () => {
   const navigate = useNavigate();
-  const { myProducts, setMyProducts,userId } = useContext(StoreContext);
+  //const { myProducts, setMyProducts,userId } = useContext(StoreContext);
+  const { myProducts, setMyProducts } = useContext(ProductContext);
+  const {userId } = useContext(UserContext);
   
 
   const userProducts = myProducts.filter(product => product.id_user === userId);

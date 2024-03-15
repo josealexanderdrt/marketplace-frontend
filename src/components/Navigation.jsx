@@ -1,10 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import cubos from "../../src/assets/image/cubos.png";
 import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
 import { useContext } from "react";
-import { StoreContext } from "../context/StoreContext";
+///import { StoreContext } from "../context/StoreContext";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import {
   FaArrowRightFromBracket,
@@ -15,9 +15,12 @@ import {
   FaPhotoFilm,
   FaHeartCircleCheck,
 } from "react-icons/fa6";
+import { FaSignOutAlt } from "react-icons/fa";
+import { UserContext } from "../context/UserContext";
 
 const Navigation = () => {
-  const { username, userId } = useContext(StoreContext);
+ // const { username, userId } = useContext(StoreContext);
+  const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
 
   let imageToShow;
@@ -102,6 +105,14 @@ const Navigation = () => {
                   <NavDropdown.Item as={Link} to="/addproduct">
                     <FaCirclePlus /> Publicar Producto
                   </NavDropdown.Item>
+                  <Nav.Link
+                  as={Link}
+                  onClick={() => logout({ returnTo: "/" })}
+                  title="Salir"
+                >
+                  <FaArrowRightFromBracket style={{ marginLeft: '10px' }} />
+                  Cerrar sesión
+                </Nav.Link>
                   <NavDropdown.Divider />
                   <NavDropdown.Item as={Link} to="/allproducts">
                     <FaGlobe /> Todos los Productos

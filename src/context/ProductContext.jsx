@@ -1,18 +1,14 @@
-/* import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { productsGet } from "../components/services/productGet.js";
 let token = localStorage.getItem("token");
 console.log("token: ", token);
 
-export const StoreContext = createContext();
+export const ProductContext = createContext();
 
-
-export const StoreProvider = ({ children }) => {
+export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [myProducts, setMyProducts] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [userId, setUserId] = useState(null);
-  const [username, setUsername] = useState(null);
-const [productDescription, setproductDescription] =useState({});
+  const [productDescription, setProductDescription] = useState({});
 
   const getMyProducts = () => {
     const myProductsResp = productsGet(token)
@@ -20,7 +16,7 @@ const [productDescription, setproductDescription] =useState({});
         setMyProducts(products.products.map((product) => ({ ...product })));
       })
       .catch((error) => {
-        console.error("You did not obtain the requested data:", error);
+        console.error("Error fetching products:", error);
       });
   };
 
@@ -29,24 +25,19 @@ const [productDescription, setproductDescription] =useState({});
   }, []);
 
   return (
-    <StoreContext.Provider
+    <ProductContext.Provider
       value={{
         products,
         setProducts,
-        users,
-        setUsers,
-        userId,
-        setUserId,
-        username,
-        setUsername,
         myProducts,
         setMyProducts,
+        productDescription,
+        setProductDescription,
         getMyProducts,
-        productDescription, 
-        setproductDescription,
+        token,
       }}
     >
       {children}
-    </StoreContext.Provider>
+    </ProductContext.Provider>
   );
-}; */
+};

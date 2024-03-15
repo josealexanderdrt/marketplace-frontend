@@ -4,19 +4,23 @@ import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 //import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
-import { StoreContext } from "../context/StoreContext";
+//import { StoreContext } from "../context/StoreContext";
 import { productAdd } from "./services/productAdd";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //import google_aut from "../../src/assets/image/google_aut.png";
 import PreviewProduct from "../components/PreviewProduct.jsx";
 import "./FormRegister.css";
+import { ProductContext } from "../context/ProductContext.jsx";
+import { UserContext } from "../context/UserContext.jsx";
 
 const AddNewProduct = () => {
-  const { getMyProducts } = useContext(StoreContext);
+  //const { getMyProducts } = useContext(StoreContext);
 
-  const { myProducts, username, setMyProducts } = useContext(StoreContext);
-  const { userId } = useContext(StoreContext);
+  const { myProducts, /* username, */ setMyProducts, getMyProducts } = useContext(ProductContext);
+  //const { userId, username } = useContext(StoreContext);
+  const { userId, username } = useContext(UserContext);
+
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");

@@ -2,16 +2,20 @@ import React, { useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
-import { StoreContext } from "../context/StoreContext";
+//import { StoreContext } from "../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import { ToastContainer, toast } from "react-toastify";
 import "../components/AllproductsComponent.css";
+import { ProductContext } from "../context/ProductContext";
+import { UserContext } from "../context/UserContext";
 //import Footerlam from "../components/Footerlam.jsx";
 
 const AllproductsComponent = () => {
   const navigate = useNavigate();
-  const { myProducts, setMyProducts, userId } = useContext(StoreContext);
+  //const { myProducts, setMyProducts, userId } = useContext(StoreContext);
+  const { myProducts, setMyProducts } = useContext(ProductContext);
+  const {userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
   const [minPriceFilter, setMinPriceFilter] = useState("");
   const [maxPriceFilter, setMaxPriceFilter] = useState("");
