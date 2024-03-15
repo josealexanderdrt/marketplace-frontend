@@ -7,7 +7,8 @@ import Register from "../views/Register";
 import MyProfile from "../views/MyProfile";
 import MyFavorite from "../views/MyFavorite";
 import AddProduct from "../views/AddProduct"
-import AllproductsComponent from "../components/AllproductsComponent";
+import AllProducts from "../views/AllProducts";
+/* import AllproductsComponent from "../components/AllproductsComponent"; */
 import DetailProductComponent from "../views/DetailProductComponent";
 
 const ConnectRoutes = () => {
@@ -20,8 +21,8 @@ const ConnectRoutes = () => {
       <R path="/favorite/:id" element={<MyFavorite />} />
       <R path="*" element={<NotFound />} /> 
       <R path="/addproduct" element={<AddProduct />} /> 
-      <R path="/allproducts" element={<AllproductsComponent />} /> 
-      {<R path="/allproducts/:id" element={<DetailProductComponent />} /> }
+      <R path="/allproducts" element={<AllProducts />} /> 
+      {<R path="/allproducts/:id" element={<DetailProductComponent />} /> } {/* arreglar detailproductcomponent , es un componente no una vista */}
     </Rs>
   );
 };

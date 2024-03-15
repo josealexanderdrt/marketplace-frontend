@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       <Catalogue />
       <Transition/>
-      <AllproductsComponent/>
+      <AllproductsComponent isHomePage={false} isFilterDescrip={false} isFilterBrand={false} /* numCards={8} */ columnClass="row-cols-md-4"/>
       <Footerlam/>
     </div>
   );
