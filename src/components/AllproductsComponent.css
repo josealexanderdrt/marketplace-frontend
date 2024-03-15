@@ -1,11 +1,11 @@
-.input_filter_namebrand{
-    display: flex;
-    gap: 1rem;
+.input_filter_namebrand {
+  display: flex;
+  gap: 1rem;
 }
 
-.filter_price{
-    display: flex;
-    gap: 1rem;
+.filter_price {
+  display: flex;
+  gap: 1rem;
 }
 
 /* .container{
@@ -15,19 +15,22 @@
     flex-direction: column;
 } */
 
-.input_filter{
-    display: flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction: column;
-    gap:2rem;
-   
+.input_filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.boton{
-    margin-bottom: 1rem;
-    padding: 0.7rem;
-    
+.boton {
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+}
+
+.icon-heart-container {
+  position: absolute;
+  right: 10px;
 }
 
 .footer {
