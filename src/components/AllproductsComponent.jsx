@@ -9,6 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "../components/AllproductsComponent.css";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
+//import Footerlam from "../components/Footerlam.jsx";
 
 const AllproductsComponent = ({
   isHomePage,
