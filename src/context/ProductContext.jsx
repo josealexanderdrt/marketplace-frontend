@@ -34,7 +34,7 @@ export const ProductProvider = ({ children }) => {
         productDescription,
         setProductDescription,
         getMyProducts,
-        token,
+        
       }}
     >
       {children}

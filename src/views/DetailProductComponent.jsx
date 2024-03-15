@@ -9,12 +9,12 @@ import "../views/Detail.css";
 const DetailProductComponent = () => {
     const navigate = useNavigate();
     //const { myProducts, productDescription, setproductDescription } = useContext(StoreContext);
-    const { myProducts, productDescription, setproductDescription } = useContext(ProductContext);
+    const { myProducts, productDescription, setProductDescription } = useContext(ProductContext);
     const { id } = useParams();
 
     useEffect(() => {
         const productFilter = myProducts.find((product) => product.id_product === parseInt(id));
-        setproductDescription(productFilter);
+        setProductDescription(productFilter);
     }, []);
 
     return (

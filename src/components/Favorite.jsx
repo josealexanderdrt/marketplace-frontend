@@ -5,12 +5,15 @@ import IconHeart from "./IconHeart";
 import "./Favorite.css";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
+import { UserContext } from "../context/UserContext";
 
 
 const Favorite = ({ userId }) => {
   const navigate = useNavigate();
   //const { myProducts, setMyProducts} = useContext(StoreContext);
   const { myProducts, setMyProducts} = useContext(ProductContext);
+  
+
 
   const removeFavorite = (id) => {
     const newProducts = myProducts.map((product) => {

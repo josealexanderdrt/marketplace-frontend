@@ -26,7 +26,7 @@ const AllproductsComponent = ({
   const { userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 999.999]);
+  const [priceRange, setPriceRange] = useState([0, 1800000.00]);
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value.toLowerCase());
@@ -141,7 +141,7 @@ const AllproductsComponent = ({
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
-              max={999.999}
+              max={2000000.00}
             />
           </div>
           <Button className="boton" variant="secondary" onClick={clearFilters}>
