@@ -75,6 +75,7 @@ const Favorite = ({ userId }) => {
               <IconHeart className="border_heart" filled={product.isFavorite} />
               <Card.Title>{product.name_product}</Card.Title>
               <Card.Text>{product.description}</Card.Text>
+              <Card.Text><strong>Precio:${product.price}</strong></Card.Text>
               
             </Card.Body>
           </Card>
