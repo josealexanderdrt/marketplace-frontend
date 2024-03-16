@@ -12,4 +12,9 @@
 
   }
 
- 
+  .navbarLam {
+    position: absolute; /* O puedes usar 'absolute' según tus necesidades */
+    top: 0;
+    width: 100%; /* Ajusta el ancho según sea necesario */
+    z-index: 1000; /* Un valor alto para asegurarse de que esté por encima de otros componentes */
+  }

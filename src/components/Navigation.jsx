@@ -19,7 +19,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { UserContext } from "../context/UserContext";
 
 const Navigation = () => {
- // const { username, userId } = useContext(StoreContext);
+  // const { username, userId } = useContext(StoreContext);
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
 
@@ -31,7 +31,7 @@ const Navigation = () => {
   }
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary navbarLam" bg="light" data-bs-theme="light">
+    <Navbar expand="lg" className="bg-body-tertiary navbarLam " bg="light" data-bs-theme="light">
       <Container>
         <Navbar.Brand>
           <Link to="/">
@@ -44,11 +44,9 @@ const Navigation = () => {
           </Link>
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-        <Navbar.Collapse id="basic-navbar-nav" >
-      
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            
             {isAuthenticated ? (
               <>
                 <Navbar.Text>
@@ -64,6 +62,7 @@ const Navigation = () => {
               </>
             ) : username ? (
               <>
+              
                 <Nav.Link
                   as={Link}
                   to="/allproducts"
@@ -95,33 +94,32 @@ const Navigation = () => {
                   <NavDropdown.Item as={Link} to={`/profile/${userId}`}>
                     <FaUserLarge /> Mi perfil
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to={`/profile/${userId}`}>
-                    <FaPhotoFilm />
-                    Mis Publicaciones
-                  </NavDropdown.Item>
+
                   <NavDropdown.Item as={Link} to={`/favorite/${userId}`}>
                     <FaHeartCircleCheck /> Mis Favoritos
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/addproduct">
                     <FaCirclePlus /> Publicar Producto
                   </NavDropdown.Item>
-                  <Nav.Link
-                  as={Link}
-                  onClick={() => logout({ returnTo: "/" })}
-                  title="Salir"
-                >
-                  <FaArrowRightFromBracket style={{ marginLeft: '10px' }} />
-                  Cerrar sesión
-                </Nav.Link>
-                  <NavDropdown.Divider />
                   <NavDropdown.Item as={Link} to="/allproducts">
                     <FaGlobe /> Todos los Productos
                   </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <Nav.Link
+                    as={Link}
+                    onClick={() => logout({ returnTo: "/" })}
+                    title="Salir"
+                  >
+                    <FaArrowRightFromBracket
+                      style={{ marginLeft: "10px", color: "darkblue" }}
+                    />
+                    Cerrar sesión
+                  </Nav.Link>
                 </NavDropdown>
               </>
             ) : (
               <>
-       
+        <Navbar.Collapse>
                 <Nav.Link as={Link} to="/auth_user">
                   Iniciar sesión
                 </Nav.Link>
@@ -129,12 +127,11 @@ const Navigation = () => {
                 <Nav.Link as={Link} to="/users">
                   Registrar
                 </Nav.Link>
+                </Navbar.Collapse>
               
               </>
             )}
-           
           </Nav>
-       
         </Navbar.Collapse>
       </Container>
     </Navbar>

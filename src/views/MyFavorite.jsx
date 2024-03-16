@@ -12,7 +12,7 @@ const MyFavorite = () => {
   return (
     <Container className="view_profile">
       <div className="icons_user_style">
-        <img src={icons_user} alt="user" />
+        <img src={icons_user} alt="user"  style={{ width: "200px", height: "200px" }} />
         <h2>¡Hola! {username}</h2>
       </div>
       <Favorite userId={userId} userName={username} />
