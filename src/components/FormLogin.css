@@ -1,25 +1,31 @@
-.box_daddy_form {
-  display: flex;
-  justify-content:space-evenly;
-}
 
-.auth_google{
-    height: 2rem;
-    width: 40%
-}
 
 .icons_google_aut{
     width: 1.4rem;
     margin-bottom: 4px;
 }
 
-.form_login {
-    width: 48%; /* Ajusta el ancho del formulario según tus necesidades */
-    margin: auto; /* Centra el formulario horizontalmente en el contenedor */
-  }
+.img_lg{
+  height: 370px;
+  align-items: center;
+}
 
   .vertical_line {
-    height: 70%; /* Establecer la altura de la línea igual al contenedor */
+   
     border-left: 2.5px solid #ccc; /* Establecer el estilo de línea vertical */
-    margin: 0 20px; /* Ajustar el margen horizontal según sea necesario */
+    padding: 20px;
+ 
+  }
+
+  @media (max-width: 600px) {
+    .vertical_line {
+      border-left: none; /* Ocultar el borde izquierdo */
+      padding: 0; /* Establecer el relleno a cero */
+    }
+  }
+
+  @media (max-width: 600px) {
+    .center-on-small-screen {
+      justify-content: center !important;
+    }
   }

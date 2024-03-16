@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const Catalogue = () => {
   return (
     <div>
-      <Carousel data-bs-theme="dark" slide interval={10000}>
+      <Carousel data-bs-theme="dark" slide interval={10000} >
         <Carousel.Item>
           <img className="d-flex w-100" src={aPic} alt="first Image" />
           <Carousel.Caption>
