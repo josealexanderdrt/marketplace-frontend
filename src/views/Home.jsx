@@ -10,10 +10,11 @@ const Home = () => {
       <Catalogue />
       <Transition />
       <CardsHome
-        isHomePage={false}
+        isHomePage={false}/* aqui no se van a ver los filtros */
         isFilterDescrip={false}
         isFilterBrand={false}
-        /* numCards={8} */ columnClass="row-cols-md-4"
+        numCards={6}
+        /* numCards={8} */ columnClass="row-cols-md-3"
       />
       <Footerlam />
     </div>
