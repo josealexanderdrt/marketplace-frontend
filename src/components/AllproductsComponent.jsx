@@ -88,6 +88,7 @@ const AllproductsComponent = ({
       });
     } else {
       addFavorite(id);
+      //navigate(`/profile/${userId}`); // Navegar a la página de perfil después de agregar a favoritos
     }
   };
 
