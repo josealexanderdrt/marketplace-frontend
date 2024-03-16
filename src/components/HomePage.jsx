@@ -2,15 +2,13 @@ import React, { useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
-//import { StoreContext } from "../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import { ToastContainer, toast } from "react-toastify";
 import "../components/AllproductsComponent.css";
 import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
-import Slider from "@mui/material/Slider";
-import Typography from "@mui/material/Typography";
+import "../components/HomePage.css";
 //import Footerlam from "../components/Footerlam.jsx";
 
 const AllproductsComponent = ({
@@ -140,13 +138,8 @@ const AllproductsComponent = ({
                 <div>
                   <Badge variant="dark">{product.name}</Badge>
                 </div>
-                {/* <Button
-                  variant="dark"
-                  onClick={() => addFavoriteOnClick(product.id_product)}
-                >
-                  Agregar a favoritos
-                </Button> */}
                 <Button
+                  className="button-ver-detalles w-100"
                   variant="dark"
                   onClick={() => navigate(`/allproducts/${product.id_product}`)}
                   style={{ margin: "10px", width: "10rem" }}

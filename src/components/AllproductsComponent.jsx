@@ -26,7 +26,7 @@ const AllproductsComponent = ({
   const { userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 1800000.0]);
+  const [priceRange, setPriceRange] = useState([0, 999.999]);
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value.toLowerCase());
@@ -142,7 +142,7 @@ const AllproductsComponent = ({
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
-              max={2000000.0}
+              max={999.999}
             />
           </div>
           <Button className="boton" variant="secondary" onClick={clearFilters}>
@@ -156,11 +156,16 @@ const AllproductsComponent = ({
             <Card style={{ width: "19rem" }} className="h-90 mx-auto">
               <Card.Img variant="top" src={product.url_image} />
               <Card.Body>
-                <IconHeart
-                  className="border_heart"
-                  filled={product.isFavorite}
-                  onClick={() => addFavoriteOnClick(product.id_product)}
-                />
+
+                <button // Botón del corazón
+                  className="icon-heart-button" // Estilo CSS opcional
+                  onClick={() => addFavoriteOnClick(product.id_product)} // Llama a la función addFavoriteOnClick
+                >
+                  <IconHeart
+                    className="border_heart"
+                    filled={product.isFavorite}
+                  />
+                </button>
                 <Card.Title>{product.name_product}</Card.Title>
                 <Card.Text>
                   <strong>Precio: ${product.price}</strong>

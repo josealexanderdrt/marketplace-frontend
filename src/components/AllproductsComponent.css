@@ -12,7 +12,7 @@
 
 } */
 
-.box-daddy-allproducts{
+.box-daddy-allproducts {
   display: flex;
 }
 
@@ -28,16 +28,14 @@
 .input_filter {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Alinea los filtros hacia arriba */
   flex-direction: column;
   gap: 2rem;
-  margin-bottom: 70rem; /* Ajusta el margen superior según sea necesario */
-  position: sticky; /* Ajusta la distancia desde la parte superior según sea necesario */
+  margin-bottom: 70rem;
+  /*   position: sticky;  */ /* Ajusta la distancia desde la parte superior según sea necesario */
   z-index: 1000; /* Asegura que esté por encima del contenido */
-  /* background-color: white; */ /* Añade un fondo blanco para resaltar los filtros */
   padding: 10px; /* Añade un relleno para separar los filtros del borde */
   border-radius: 5px; /* Opcional: agrega esquinas redondeadas para un mejor aspecto */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Opcional: agrega sombra para resaltar los filtros */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */ /* Opcional: agrega sombra para resaltar los filtros */
 }
 /* .container{
     display: flex;.
@@ -65,9 +63,9 @@
 }
 
 .footer {
-    width: 100%;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-  }
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
