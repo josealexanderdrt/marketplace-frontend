@@ -31,12 +31,7 @@ const Navigation = () => {
   }
 
   return (
-    <Navbar
-      expand="lg"
-      className="bg-body-tertiary navbarLam"
-      bg="light"
-      data-bs-theme="light"
-    >
+    <Navbar expand="lg" className="bg-body-tertiary navbarLam " bg="light" data-bs-theme="light">
       <Container>
         <Navbar.Brand>
           <Link to="/">
@@ -67,6 +62,7 @@ const Navigation = () => {
               </>
             ) : username ? (
               <>
+              
                 <Nav.Link
                   as={Link}
                   to="/allproducts"
@@ -123,6 +119,7 @@ const Navigation = () => {
               </>
             ) : (
               <>
+        <Navbar.Collapse>
                 <Nav.Link as={Link} to="/auth_user">
                   Iniciar sesión
                 </Nav.Link>
@@ -130,6 +127,8 @@ const Navigation = () => {
                 <Nav.Link as={Link} to="/users">
                   Registrar
                 </Nav.Link>
+                </Navbar.Collapse>
+              
               </>
             )}
           </Nav>

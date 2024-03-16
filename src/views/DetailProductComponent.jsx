@@ -33,7 +33,7 @@ const DetailProductComponent = () => {
             <div className="description"></div>
             <div className="price">Precio: ${productDescription.price}</div>
             <p class="lead">{productDescription.description}</p>
-
+            
             <Stack direction="horizontal" gap={2}>
               <Button variant="dark">
                 Estado: <Badge bg="secondary">{productDescription.state}</Badge>
