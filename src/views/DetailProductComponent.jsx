@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 //import { StoreContext } from "../context/StoreContext";
 import { ProductContext } from "../context/ProductContext";
 import { Container, Button, Badge, Stack } from "react-bootstrap";
-import "../views/Detail.css";
+import "../views/Detail_copy.css";
 
 const DetailProductComponent = () => {
   const navigate = useNavigate();
