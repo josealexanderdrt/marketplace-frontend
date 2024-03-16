@@ -23,10 +23,10 @@ const AllproductsComponent = ({
   const navigate = useNavigate();
   //const { myProducts, setMyProducts, userId } = useContext(StoreContext);
   const { myProducts, setMyProducts } = useContext(ProductContext);
-  const {userId } = useContext(UserContext);
+  const { userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 1800000.00]);
+  const [priceRange, setPriceRange] = useState([0, 1800000.0]);
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value.toLowerCase());
@@ -44,13 +44,14 @@ const AllproductsComponent = ({
     const matchesFilter =
       product.name_product.toLowerCase().includes(filter) ||
       product.description.toLowerCase().includes(filter);
-  
-    const matchesBrand = !brandFilter || product.id_brand === parseInt(brandFilter);
-  
+
+    const matchesBrand =
+      !brandFilter || product.id_brand === parseInt(brandFilter);
+
     const matchesPriceRange =
       parseFloat(product.price) >= priceRange[0] &&
       parseFloat(product.price) <= priceRange[1];
-  
+
     return matchesFilter && matchesBrand && matchesPriceRange;
   });
 
@@ -92,6 +93,7 @@ const AllproductsComponent = ({
       });
     } else {
       addFavorite(id);
+      //navigate(`/profile/${userId}`); // Navegar a la página de perfil después de agregar a favoritos
     }
   };
 
@@ -111,7 +113,7 @@ const AllproductsComponent = ({
             </div>
 
             <div className="mb-3">
-            <select
+              <select
                 className="form-select"
                 aria-label="Filtrar por Marca"
                 value={brandFilter}
@@ -145,7 +147,7 @@ const AllproductsComponent = ({
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
               min={0}
-              max={2000000.00}
+              max={2000000.0}
             />
             {/* <div className="mb-3">
               <input
@@ -171,6 +173,7 @@ const AllproductsComponent = ({
                 <IconHeart
                   className="border_heart"
                   filled={product.isFavorite}
+                  onClick={() => addFavoriteOnClick(product.id_product)}
                 />
                 <Card.Title>{product.name_product}</Card.Title>
                 <Card.Text>
