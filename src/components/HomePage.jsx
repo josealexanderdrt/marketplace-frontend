@@ -11,7 +11,7 @@ import { ProductContext } from "../context/ProductContext";
 import { UserContext } from "../context/UserContext";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
-
+//import Footerlam from "../components/Footerlam.jsx";
 
 const AllproductsComponent = ({
   isHomePage,
@@ -23,10 +23,10 @@ const AllproductsComponent = ({
   const navigate = useNavigate();
   //const { myProducts, setMyProducts, userId } = useContext(StoreContext);
   const { myProducts, setMyProducts } = useContext(ProductContext);
-  const { userId } = useContext(UserContext);
+  const {userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 1800000.00]);
+  const [priceRange, setPriceRange] = useState([0, 999.999]);
 
   const handleFilterChange = (e) => {
     setFilter(e.target.value.toLowerCase());
@@ -44,17 +44,21 @@ const AllproductsComponent = ({
     const matchesFilter =
       product.name_product.toLowerCase().includes(filter) ||
       product.description.toLowerCase().includes(filter);
-
-    const matchesBrand =
-      !brandFilter || product.id_brand === parseInt(brandFilter);
-
+  
+    const matchesBrand = !brandFilter || product.id_brand === parseInt(brandFilter);
+  
     const matchesPriceRange =
       parseFloat(product.price) >= priceRange[0] &&
       parseFloat(product.price) <= priceRange[1];
-
+  
     return matchesFilter && matchesBrand && matchesPriceRange;
   });
 
+  /* const clearFilters = () => {
+    setFilter("");
+    setBrandFilter("");
+    setPriceRange([0, 999.999]); // Restablecer el rango de precios
+  }; */
   const clearFilters = () => {
     setFilter("");
     setBrandFilter("");
@@ -92,7 +96,7 @@ const AllproductsComponent = ({
   };
 
   return (
-    <div className="box-daddy-allproducts">
+    <div className="container">
       {isHomePage && (
         <div className="input_filter">
           <div className="input_filter_namebrand">
@@ -105,54 +109,13 @@ const AllproductsComponent = ({
                 value={filter}
               />
             </div>
-
-            <div className="mb-3">
-              <select
-                className="form-select"
-                aria-label="Filtrar por Marca"
-                value={brandFilter}
-                onChange={handleBrandChange}
-              >
-                <option value="">Selecciona una marca</option>
-                <option value="1">SAMSUNG</option>
-                <option value="2">LG</option>
-                <option value="3">APPLE</option>
-                <option value="4">DELL</option>
-                <option value="5">SONY</option>
-                <option value="6">LENOVO</option>
-                <option value="7">HP</option>
-                <option value="8">BOSE</option>
-                <option value="9">APPLE WATCH</option>
-                <option value="10">SONY WATCH</option>
-                <option value="11">FITBIT WATCH</option>
-                <option value="12">SAMSUNG WATCH</option>
-                <option value="13">XIAOAMI</option>
-                <option value="14">HUAWEI</option>
-              </select>
-            </div>
           </div>
-          <div className="filter_price">
-            <Typography id="range-slider" gutterBottom>
-              Rango de precios
-            </Typography>
-            <Slider
-              value={priceRange}
-              onChange={handlePriceChange}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              min={0}
-              max={2000000.00}
-            />
-          </div>
-          <Button className="boton" variant="secondary" onClick={clearFilters}>
-            Limpiar Filtros
-          </Button>
         </div>
       )}
-      <div className={`card-daddy row ${columnClass} justify-content-center`}>
+      <div className={`row ${columnClass} justify-content-center`}>
         {filteredProducts.slice(0, numCards).map((product, index) => (
           <div key={index} className="col mb-5">
-            <Card style={{ width: "19rem" }} className="h-90 mx-auto">
+            <Card style={{ width: "18rem" }} className="h-100 mx-auto">
               <Card.Img variant="top" src={product.url_image} />
               <Card.Body>
                 <IconHeart
