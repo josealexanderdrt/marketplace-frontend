@@ -44,9 +44,9 @@ const Navigation = () => {
           </Link>
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle  aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto " >
             {isAuthenticated ? (
               <>
                 <Navbar.Text>
@@ -105,16 +105,16 @@ const Navigation = () => {
                     <FaGlobe /> Todos los Productos
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <Nav.Link
+                 
+                  <NavDropdown.Item
                     as={Link}
                     onClick={() => logout({ returnTo: "/" })}
                     title="Salir"
                   >
                     <FaArrowRightFromBracket
-                      style={{ marginLeft: "10px", color: "darkblue" }}
-                    />
-                    Cerrar sesión
-                  </Nav.Link>
+                      style={{color: "black" }}
+                    />{""} Cerrar sesión
+                  </NavDropdown.Item>
                 </NavDropdown>
               </>
             ) : (
