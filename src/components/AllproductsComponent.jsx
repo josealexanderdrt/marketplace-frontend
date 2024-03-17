@@ -94,7 +94,6 @@ const AllproductsComponent = ({
 
   return (
     <div className="box-daddy-allproducts">
-      {isHomePage && (
         <div className="input_filter">
           <div className="input_filter_namebrand">
             <div className="mb-3">
@@ -149,8 +148,7 @@ const AllproductsComponent = ({
             Limpiar Filtros
           </Button>
         </div>
-      )}
-      <div className={`card-daddy row ${columnClass} justify-content-center`}>
+      <div className="card-daddy row row-cols-md-3 justify-content-center">
         {filteredProducts.slice(0, numCards).map((product, index) => (
           <div key={index} className="col mb-5">
             <Card style={{ width: "19rem" }} className="h-90 mx-auto">
@@ -169,27 +167,17 @@ const AllproductsComponent = ({
                 <Card.Title>{product.name_product}</Card.Title>
                 <Card.Text>
                   <strong>Precio: ${product.price}</strong>
-                </Card.Text>
-                {isFilterBrand && (
+                </Card.Text> 
                   <Card.Text>
                     <strong>Marca: {product.name_brand}</strong>
                   </Card.Text>
-                )}
-                {isFilterDescrip && (
                   <Card.Text>{product.description}</Card.Text>
-                )}
                 <Card.Text>
                   <strong>Publicado por: {product.username}</strong>
                 </Card.Text>
                 <div>
                   <Badge variant="dark">{product.name}</Badge>
                 </div>
-                {/* <Button
-                  variant="dark"
-                  onClick={() => addFavoriteOnClick(product.id_product)}
-                >
-                  Agregar a favoritos
-                </Button> */}
                 <Button
                   variant="dark"
                   onClick={() => navigate(`/product/${product.id_product}?from=allproducts-details`)}

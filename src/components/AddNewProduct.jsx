@@ -10,15 +10,14 @@ import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 //import google_aut from "../../src/assets/image/google_aut.png";
 import PreviewProduct from "../components/PreviewProduct.jsx";
-import "./FormRegister.css";
+import "../components/AddNewProduct.css";
 import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
 
 const AddNewProduct = () => {
   //const { getMyProducts } = useContext(StoreContext);
 
-  const { myProducts, /* username, */ setMyProducts, getMyProducts } =
-    useContext(ProductContext);
+  const { myProducts, /* username, */ setMyProducts, getMyProducts } = useContext(ProductContext);
   //const { userId, username } = useContext(StoreContext);
   const { userId, username } = useContext(UserContext);
 
@@ -31,11 +30,13 @@ const AddNewProduct = () => {
   const [id_user, setId_user] = useState("");
   const [id_categories, setId_categories] = useState("");
   const [id_brand, setId_brand] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     if (
       !name ||
@@ -48,14 +49,14 @@ const AddNewProduct = () => {
       !id_brand
     ) {
       toast.error("Todos los campos son obligatorios", {
-        position: "top-center",
-        autoClose: 3000,
+        position: "bottom-right",
+        autoClose: 1900,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
         transition: Bounce,
       });
       return;
@@ -77,22 +78,12 @@ const AddNewProduct = () => {
 
     productAdd(nuevoProducto)
       .then((response) => {
+        setIsLoading(false);
         if (response.newProduct) {
-          console.log("response.newProduct", response.newProduct);
-          toast.success("Producto registrado exitosamente", {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          });
-          setMyProducts([...myProducts, nuevoProducto]);
-          getMyProducts();
-          navigate(`/profile/${userId}`);
+          setTimeout(()=> {
+            getMyProducts();
+            navigate(`/profile/${userId}`);
+           }, 1000 )
         } else {
           throw Error("Error al registrar producto.");
         }
@@ -110,14 +101,11 @@ const AddNewProduct = () => {
           transition: Bounce,
         });
       });
-
-    console.log(userId, "user id ");
-    console.log("ID DEL USUARUIO");
   };
 
   return (
     <>
-      <section className="row">
+      <section className={`row ${isLoading ? "loading-cursor" : ""}`}>
         <div className="col-12 col-md-6">
           <PreviewProduct
             name={name}
@@ -198,15 +186,12 @@ const AddNewProduct = () => {
                 onChange={(e) => setId_categories(e.target.value)}
                 value={id_categories}
               >
-                <option>Selecciona una Marca de las opciones</option>
-                <option value="1">PHONE</option>
-                <option value="2">LAPTOP</option>
-                <option value="3">SMART WATCH</option>
-                <option value="4">HEADPHONES</option>
-                <option value="5">PHONE</option>
-                <option value="6">LAPTOP</option>
-                <option value="7">SMART WATCH</option>
-                <option value="8">HEADPHONES</option>
+                <option>Selecciona una Categoria</option>
+                <option value="1">Phone</option>
+                <option value="2">Laptop</option>
+                <option value="3">Smart watch</option>
+                <option value="4">Headphones</option>
+                <option value="5">Smart Tv</option>
               </Form.Select>
             </Form.Group>
 
@@ -217,7 +202,7 @@ const AddNewProduct = () => {
                 onChange={(e) => setId_brand(e.target.value)}
                 value={id_brand}
               >
-                <option>Selecciona una Marca de las opciones</option>
+                <option>Selecciona una Marca</option>
                 <option value="1">SAMSUNG</option>
                 <option value="2">LG</option>
                 <option value="3">APPLE</option>
@@ -232,20 +217,6 @@ const AddNewProduct = () => {
                 <option value="12">SAMSUNG WATCH</option>
                 <option value="13">XIAOAMI</option>
                 <option value="14">HUAWEI</option>
-                <option value="15">SAMSUNG</option>
-                <option value="16">LG</option>
-                <option value="17">APPLE</option>
-                <option value="18">DELL</option>
-                <option value="19">SONY</option>
-                <option value="20">LENOVO</option>
-                <option value="21">HP</option>
-                <option value="22">BOSE</option>
-                <option value="23">APPLE WATCH</option>
-                <option value="24">SONY WATCH</option>
-                <option value="25">FITBIT WATCH</option>
-                <option value="26">SAMSUNG WATCH</option>
-                <option value="27">XIAOAMI</option>
-                <option value="28">HUAWEI</option>
               </Form.Select>
             </Form.Group>
 
