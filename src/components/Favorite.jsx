@@ -54,7 +54,7 @@ const Favorite = ({ userId, username }) => {
             <div>
               <span>¡Hola! </span>
               <h3 class="display-4">{username}</h3>
-              <h3 class="display-6">Favitos♥️</h3>
+              <h3 class="display-6">Favoritos♥️</h3>
             </div>
           </div>
         </Col>
