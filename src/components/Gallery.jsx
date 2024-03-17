@@ -63,7 +63,7 @@ const Gallery = () => {
               style={{ width: "100%", height: "200px", objectFit: "cover" }}
             />
             <Card.Body>
-              <button
+              <div
                 className="icon-heart-button"
                 onClick={() => addFavorite(product.id_product)}
               >
@@ -71,7 +71,7 @@ const Gallery = () => {
                   className="border_heart"
                   filled={product.isFavorite}
                 />
-              </button>
+              </div>
               <Card.Title>{product.name_product}</Card.Title>
               <Card.Text>{product.description}</Card.Text>
               <Card.Text>
