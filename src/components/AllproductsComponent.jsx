@@ -192,7 +192,7 @@ const AllproductsComponent = ({
                 </Button> */}
                 <Button
                   variant="dark"
-                  onClick={() => navigate(`/allproducts/${product.id_product}`)}
+                  onClick={() => navigate(`/allproducts/${product.id_product}?from=allProducts`)}
                   style={{ margin: "10px", width: "10rem" }}
                 >
                   Ver detalles

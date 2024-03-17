@@ -1,12 +1,14 @@
 import { useEffect, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 //import { StoreContext } from "../context/StoreContext";
 import { ProductContext } from "../context/ProductContext";
 import { Container, Button, Badge, Stack } from "react-bootstrap";
 import "../views/Detail_copy.css";
 
 const DetailProductComponent = () => {
+  const location = useLocation()
   const navigate = useNavigate();
+  const fromHomePage = location.search.includes("from=homepage");
   //const { myProducts, productDescription, setproductDescription } = useContext(StoreContext);
   const { myProducts, productDescription, setProductDescription } =
     useContext(ProductContext);
@@ -53,7 +55,7 @@ const DetailProductComponent = () => {
             <Button
               className="custom-button botn m-4"
               variant="dark"
-              onClick={() => navigate(`/allProducts`)}
+              onClick={() => fromHomePage ? navigate(`/`) : navigate (`/allproducts`) }
             >
               Retornar
             </Button>

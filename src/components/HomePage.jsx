@@ -146,7 +146,8 @@ const AllproductsComponent = ({
                 <Button
                   className="button-ver-detalles w-100"
                   variant="dark"
-                  onClick={() => navigate(`/allproducts/${product.id_product}`)}
+                  /* onClick={() => navigate(`/allproducts/${product.id_product})} */
+                  onClick={() => navigate(`/allproducts/${product.id_product}?from=homepage`)}
                   style={{ margin: "10px", width: "10rem" }}
                 >
                   Ver detalles
