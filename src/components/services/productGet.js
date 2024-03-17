@@ -1,5 +1,5 @@
 // Reemplazar por la URL de la API
-const URL_API = "https://localhost:3000/api/v1/products";
+const URL_API = "http://localhost:3000/api/v1/products";
 
 
 export const productsGet = async (token) => {
