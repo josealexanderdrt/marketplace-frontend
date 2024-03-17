@@ -62,7 +62,7 @@ const Favorite = ({ userId }) => {
           <Card
             key={i}
             className="photo"
-            onClick={() => removeFavorite(product.id_product)}
+            /* onClick={() => removeFavorite(product.id_product)} */
             style={{ width: "16rem" }}
           >
             <Card.Img
@@ -72,7 +72,15 @@ const Favorite = ({ userId }) => {
               style={{ width: "100%", height: "200px", objectFit: "cover" }}
             />
             <Card.Body>
-              <IconHeart className="border_heart" filled={product.isFavorite} />
+            <div
+                className="icon-heart-button"
+                onClick={() => removeFavorite(product.id_product)}
+              >
+                <IconHeart
+                  className="border_heart"
+                  filled={product.isFavorite}
+                />
+              </div>
               <Card.Title>{product.name_product}</Card.Title>
               <Card.Text>{product.description}</Card.Text>
               <Card.Text><strong>Precio:${product.price}</strong></Card.Text>

@@ -6,7 +6,7 @@ export const categoriaList = async () => {
   const response = await fetch(URL_API, {
     method: "GET",
     headers: {
-    //   "Content-Type": "application/json",
+       //"Content-Type": "application/json",
     },
   });
   const data = await response.json();
