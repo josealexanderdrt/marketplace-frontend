@@ -22,7 +22,7 @@ const ConnectRoutes = () => {
       <R path="*" element={<NotFound />} /> 
       <R path="/addproduct" element={<AddProduct />} /> 
       <R path="/allproducts" element={<AllProducts />} /> 
-      {<R path="/allproducts/:id" element={<DetailProductComponent />} /> } {/* arreglar detailproductcomponent , es un componente no una vista */}
+      {<R path="/product/:id" element={<DetailProductComponent />} /> } {/* arreglar detailproductcomponent , es un componente no una vista */}
     </Rs>
   );
 };

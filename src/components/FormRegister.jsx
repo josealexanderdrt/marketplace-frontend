@@ -1,74 +1,41 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import mundo_cubo_copia from "../../src/assets/image/mundo_cubo-copia.png";
-import {
-  Container,
-  Image,
-  Button,
-  Form,
-  Row,
-  Col,
-  Stack,
-} from "react-bootstrap";
+import { Container, Image, Button, Form, Row, Col } from "react-bootstrap";
 
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-//import { StoreContext } from "../context/StoreContext";
 import google_aut from "../../src/assets/image/google_aut.png";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast, Bounce } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "./FormLogin.css";
 import { signup } from "./services/signup.js";
 import { UserContext } from "../context/UserContext";
 
 const FormRegister = () => {
-  //const { users, setUsers } = useContext(StoreContext);
   const { users, setUsers } = useContext(UserContext);
   const [name, setName] = useState("");
   const [rut, setRut] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const { loginWithRedirect } = useAuth0();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    // Validación de campos (puedes agregar más validaciones según tus necesidades)
+    // Validación de campos
     if (!name || !rut || !email || !password || !address) {
-      toast.error("Todos los campos son obligatorios", {
-        position: "bottom-right",
-        autoClose: 950,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+      setError("Todos los campos son obligatorios. ");
+      setIsLoading(false);
       return;
     }
 
-    // Verificar si el correo electrónico ya está registrado
-    if (users.some((user) => user.email === email || user.rut === rut)) {
-      toast.error(
-        "Rut o el correo ya existe en nuestra base de datos, verifique",
-        {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        }
-      );
-      return;
-    }
+    
 
     // Agregar nuevo usuario
     const newUser = {
@@ -84,50 +51,26 @@ const FormRegister = () => {
 
     setUsers([...users, newUser]);
 
-    const signupupUser = signup(newUser)
-      .then((response) => {
-        if (response.userCreated) {
+    try {
+      const response = await signup(newUser);
+      if (response.userCreated) {
+        setTimeout(() => {
           navigate(`/auth_user`, {
             state: { userName: response.name },
           });
-        } else {
-          throw Error("Error al registrar usuario.");
-        }
-      })
-      .catch((error) => {
-        toast.error("👀😢" + error, {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
-      });
-
-    // Mostrar mensaje de éxito y redirigir al usuario
-    toast.success("Te has registrado exitosamente", {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
-
-    // Redirigir al usuario al inicio de sesión
-    navigate("/auth_user");
+        }, 1000);
+      } else {
+        throw new Error("Rut o Correo ya existente, intente nuevamente");
+      }
+    } catch (error) {
+      setError("Rut o Correo Electronico ya existente");
+      setIsLoading(false);
+    }
   };
-  //console.log(handleSubmit);
+
   return (
     <>
-      <Container className="m-3 p-2 ">
+      <Container className={`m-3 p-2 ${isLoading ? "loading-cursor" : ""}`}>
         <Row>
           <Col sm className="d-flex justify-content-center">
             <Image
@@ -140,8 +83,8 @@ const FormRegister = () => {
             sm
             className="d-flex flex-column align-items-center justify-content-center"
           >
-            <h3 class="display-3">¡Hola! </h3>
-            <h4 class="display-4">Bienvenido </h4>
+            <h3 className="display-3">¡Hola! </h3>
+            <h4 className="display-4">Bienvenido </h4>
             <Button
               className="auth_google rounded-button"
               variant="light"
@@ -194,9 +137,6 @@ const FormRegister = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
-                {/* <Form.Text className="text-muted">
-          
-          </Form.Text> */}
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -226,6 +166,12 @@ const FormRegister = () => {
               >
                 Registrar
               </Button>
+              {error && (
+                <div className="alert alert-danger mt-3" role="alert">
+                  {error}
+                </div>
+              )}
+              {isLoading && <div>Cargando...</div>}
             </Form>
           </Col>
         </Row>

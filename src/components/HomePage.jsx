@@ -79,14 +79,14 @@ const AllproductsComponent = ({
   const addFavoriteOnClick = (id) => {
     if (!userId) {
       toast.error("Debes iniciar sesión para agregar a favoritos", {
-        position: "top-center",
-        autoClose: 3000,
+        position: "bottom-right",
+        autoClose: 1900,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "light",
+        theme: "dark",
       });
     } else {
       addFavorite(id);
@@ -147,7 +147,7 @@ const AllproductsComponent = ({
                   className="button-ver-detalles w-100"
                   variant="dark"
                   /* onClick={() => navigate(`/allproducts/${product.id_product})} */
-                  onClick={() => navigate(`/allproducts/${product.id_product}?from=homepage`)}
+                  onClick={() => navigate(`/product/${product.id_product}?from=homepage-details`)}
                   style={{ margin: "10px", width: "10rem" }}
                 >
                   Ver detalles
