@@ -116,7 +116,7 @@ const AllproductsComponent = ({
             <Card style={{ width: "18rem" }} className="h-100 mx-auto">
               <Card.Img variant="top" src={product.url_image} />
               <Card.Body>
-              <button // Botón del corazón
+              <div // Botón del corazón
                   className="icon-heart-button" // Estilo CSS opcional
                   onClick={() => addFavoriteOnClick(product.id_product)} // Llama a la función addFavoriteOnClick
                 >
@@ -124,7 +124,7 @@ const AllproductsComponent = ({
                     className="border_heart"
                     filled={product.isFavorite}
                   />
-                </button>
+                </div>
                 <Card.Title>{product.name_product}</Card.Title>
                 <Card.Text>
                   <strong>Precio: ${product.price}</strong>
