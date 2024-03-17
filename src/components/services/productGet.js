@@ -1,9 +1,10 @@
 // Reemplazar por la URL de la API
-const URL_API = "https://marketplace-backend-vex0.onrender.com/api/v1/products";
+const URL_API = "http://localhost:3000/api/v1/products";
 
-
+              
 export const productsGet = async (token) => {
   
+  console.log("prueba de solicitud de productos ")
     const response = await fetch(URL_API, {
       method: "GET",
       headers: {
@@ -12,6 +13,7 @@ export const productsGet = async (token) => {
       },
     });
     const data = await response.json();
+    console.log("data", data)
     return data;
 };
 
