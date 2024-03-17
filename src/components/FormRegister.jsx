@@ -38,8 +38,8 @@ const FormRegister = () => {
     // Validación de campos (puedes agregar más validaciones según tus necesidades)
     if (!name || !rut || !email || !password || !address) {
       toast.error("Todos los campos son obligatorios", {
-        position: "top-center",
-        autoClose: 3000,
+        position: "bottom-right",
+        autoClose: 950,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
