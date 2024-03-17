@@ -5,7 +5,7 @@ import IconHeart from "./IconHeart";
 import "./Favorite.css";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
-import { UserContext } from "../context/UserContext";
+//import { UserContext } from "../context/UserContext";
 
 
 const Favorite = ({ userId }) => {
