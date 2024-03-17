@@ -110,7 +110,7 @@ const AllproductsComponent = ({
           </div>
         </div>
       )}
-      <div className={`row ${columnClass} justify-content-center`}>
+      <div className="row row-cols-md-3 justify-content-center">
         {filteredProducts.slice(0, numCards).map((product, index) => (
           <div key={index} className="col mb-5">
             <Card style={{ width: "18rem" }} className="h-100 mx-auto">
@@ -147,7 +147,7 @@ const AllproductsComponent = ({
                   className="button-ver-detalles w-100"
                   variant="dark"
                   /* onClick={() => navigate(`/allproducts/${product.id_product})} */
-                  onClick={() => navigate(`/product/${product.id_product}?from=homepage-details`)}
+                  onClick={() => navigate(`/product/${product.id_product}?from=homepage`)}
                   style={{ margin: "10px", width: "10rem" }}
                 >
                   Ver detalles
