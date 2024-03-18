@@ -21,6 +21,7 @@ const Favorite = ({ userId, username }) => {
   const navigate = useNavigate();
   //const { myProducts, setMyProducts} = useContext(StoreContext);
   const { myProducts, setMyProducts } = useContext(ProductContext);
+  const { url_icons } = useContext(useContext);
 
 
   const removeFavorite = (id) => {
@@ -47,7 +48,7 @@ const Favorite = ({ userId, username }) => {
           <div>
             <Image
               className="p-3"
-              src={icons_user}
+              src={url_icons}
               alt="user"
               style={{ width: "180px", height: "180px" }}
             />
