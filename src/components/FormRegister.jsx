@@ -19,6 +19,7 @@ const FormRegister = () => {
   const [password, setPassword] = useState("");
   const [address, setAddress] = useState("");
   const [error, setError] = useState("");
+  const [url_icons, setUrlIcons] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const { loginWithRedirect } = useAuth0();
@@ -29,7 +30,7 @@ const FormRegister = () => {
     setIsLoading(true);
 
     // Validación de campos
-    if (!name || !rut || !email || !password || !address) {
+    if (!name || !rut || !email || !password || !address || !url_icons) {
       setError("Todos los campos son obligatorios. ");
       setIsLoading(false);
       return;
@@ -45,11 +46,12 @@ const FormRegister = () => {
         email: email,
         password: password,
         address: address,
-        url_icons: "dd",
+        url_icons: url_icons,
       },
     };
 
     setUsers([...users, newUser]);
+    setUrlIcons(url_icons)
 
     try {
       const response = await signup(newUser);
@@ -156,6 +158,15 @@ const FormRegister = () => {
                   placeholder="Enter address"
                   onChange={(e) => setAddress(e.target.value)}
                   value={address}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicAddress">
+                <Form.Label>Avatar</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter avatar"
+                  onChange={(e) => setUrlIcons(e.target.value)}
+                  value={url_icons}
                 />
               </Form.Group>
 

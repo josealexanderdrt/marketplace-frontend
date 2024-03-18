@@ -6,7 +6,7 @@ import IconHeart from "./IconHeart";
 import "./Gallery.css";
 import { UserContext } from "../context/UserContext";
 import { ProductContext } from "../context/ProductContext";
-import icons_user from "../../src/assets/image/icons_user.png";
+
 import {
   Container,
   Image,
@@ -23,12 +23,12 @@ const Gallery = () => {
   const navigate = useNavigate();
   //const { myProducts, setMyProducts,userId } = useContext(StoreContext);
   const { myProducts, setMyProducts } = useContext(ProductContext);
-  const { userId, username} = useContext(UserContext);
-  console.log("user useContext",UserContext)
+  const { userId, username, url_icons } = useContext(UserContext);
+
+  console.log("user useContext", UserContext);
   const userProducts = myProducts.filter(
     (product) => product.id_user === userId
-
-    );
+  );
 
   const addFavorite = (id) => {
     const newProducts = myProducts.map((product) => {
@@ -50,15 +50,15 @@ const Gallery = () => {
         <Col sm={4} className="text-center">
           <div>
             <Image
-            className="p-3"
-              src={icons_user}
+              className="p-3"
+              src={url_icons}
               alt="user"
               style={{ width: "180px", height: "180px" }}
             />
             <div>
-            <span>¡Hola! </span>
-            <h3 class="display-4">{username}</h3>
-            <h3 class="display-6">Publicaciones</h3>
+              <span>¡Hola! </span>
+              <h3 class="display-4">{username}</h3>
+              <h3 class="display-6">Publicaciones</h3>
             </div>
           </div>
         </Col>
@@ -66,28 +66,28 @@ const Gallery = () => {
           <section className="text-center">
             {userId && (
               <>
-              <Container className="m-3 d-flex justify-content-between ">
-                <Button
-                  className="custom-button"
-                  variant="dark"
-                  onClick={() => navigate(`/profile/${userId}`)}
-                >
-                  Mis publicaciones
-                </Button>
-                <Button
-                  className="custom-button"
-                  variant="dark"
-                  onClick={() => navigate(`/favorite/${userId}`)}
-                >
-                  Mis Favoritos
-                </Button>
+                <Container className="m-3 d-flex justify-content-between ">
+                  <Button
+                    className="custom-button"
+                    variant="dark"
+                    onClick={() => navigate(`/profile/${userId}`)}
+                  >
+                    Mis publicaciones
+                  </Button>
+                  <Button
+                    className="custom-button"
+                    variant="dark"
+                    onClick={() => navigate(`/favorite/${userId}`)}
+                  >
+                    Mis Favoritos
+                  </Button>
                 </Container>
               </>
             )}
           </section>
           <section className="d-flex flex-wrap">
             {userProducts.map((product, i) => (
-              <Col key={i}  sm={10} md={10} lg={4}className="mb-3">
+              <Col key={i} sm={10} md={10} lg={4} className="mb-3">
                 <Card key={i} className="photo m-1 p-2 ">
                   <Card.Img
                     variant="top"
@@ -115,7 +115,7 @@ const Gallery = () => {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-                </Col>
+              </Col>
             ))}
           </section>
         </Col>

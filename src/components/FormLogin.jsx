@@ -22,7 +22,7 @@ import mundo_cubo_copia from "../../src/assets/image/mundo_cubo-copia.png";
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const FormLogin = () => {
   //const { users,setUserId, setUsername } = useContext(StoreContext);
-  const { users, setUserId, setUsername } = useContext(UserContext);
+  const { users, setUserId, setUsername, setUrlIcons} = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loginWithRedirect } = useAuth0();
@@ -78,6 +78,7 @@ const FormLogin = () => {
         console.log(" Respuesta ", response);
         setUserId(response.id_user);
         setUsername(response.name);
+        setUrlIcons(response.url_icons)
         localStorage.setItem("token", response.token);
         navigate(`/profile/${response.id_user}`, {
           state: { userName: response.name },
@@ -97,6 +98,7 @@ const FormLogin = () => {
         });
       });
     console.log("user res", user);
+    console.log("url icons:",setUrlIcons);
   };
 
   return (

@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
+  const [url_icons, setUrlIcons] = useState("");
   const [userId, setUserId] = useState(null);
   const [username, setUsername] = useState(null);
   
@@ -17,6 +18,8 @@ export const UserProvider = ({ children }) => {
         setUserId,
         username,
         setUsername,
+        url_icons,
+        setUrlIcons,
       }}
     >
       {children}
