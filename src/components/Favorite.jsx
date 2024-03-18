@@ -14,12 +14,11 @@ import IconHeart from "./IconHeart";
 import "./Favorite.css";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
-//import { UserContext } from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 import icons_user from "../../src/assets/image/icons_user.png";
 
 const Favorite = ({ userId, username }) => {
   const navigate = useNavigate();
-  //const { myProducts, setMyProducts} = useContext(StoreContext);
   const { myProducts, setMyProducts } = useContext(ProductContext);
   const { url_icons } = useContext(useContext);
 
