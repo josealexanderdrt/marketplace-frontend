@@ -192,6 +192,7 @@ const AddNewProduct = () => {
                 <option value="3">Smart watch</option>
                 <option value="4">Headphones</option>
                 <option value="5">Smart Tv</option>
+                <option value="6">Mouse</option>
               </Form.Select>
             </Form.Group>
 
