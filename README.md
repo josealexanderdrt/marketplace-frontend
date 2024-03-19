@@ -13,3 +13,5 @@ Team:
 
 {Div Divinos}
 
+Deploy: https://latin-american-market.netlify.app/ 
+
