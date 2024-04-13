@@ -5,7 +5,7 @@ import mundo_cubo from "../../src/assets/image/mundo_cubo.png";
 
 const Register = () => {
   return (
-    <Container className="view_login">
+    <Container>
       <FormRegister />
     </Container>
   )

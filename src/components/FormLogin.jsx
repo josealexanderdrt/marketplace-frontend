@@ -115,7 +115,7 @@ const FormLogin = () => {
 
           <Col
             sm
-            className="d-flex flex-column align-items-center justify-content-center"
+            className="d-flex flex-column align-items-center mt-5 pt-5"
           >
             <h3 class="display-3">¡Hola! </h3>
             <h4 class="display-4">Bienvenido </h4>
@@ -194,6 +194,7 @@ const FormLogin = () => {
           </Col>
         </Row>
       </Container>
+
     </>
   );
 };

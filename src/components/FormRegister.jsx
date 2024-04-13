@@ -72,8 +72,10 @@ const FormRegister = () => {
 
   return (
     <>
-      <Container className={`m-3 p-2 ${isLoading ? "loading-cursor" : ""}`}>
-        <Row>
+    
+      <Container className="m-3 p-2">
+      {/* <Container className={`m-3 p-2 ${isLoading ? "loading-cursor" : ""}`}> PENDIENTE DE SOLUCIONAR MENTENER IDEA  */}
+        <Row >
           <Col sm className="d-flex justify-content-center">
             <Image
               src={mundo_cubo_copia}
@@ -83,7 +85,7 @@ const FormRegister = () => {
           </Col>
           <Col
             sm
-            className="d-flex flex-column align-items-center justify-content-center"
+            className="d-flex flex-column align-items-center mt-5 pt-5"
           >
             <h3 className="display-3">¡Hola! </h3>
             <h4 className="display-4">Bienvenido </h4>
