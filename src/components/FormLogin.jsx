@@ -14,15 +14,14 @@ import "./FormLogin.css";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useContext, useState } from "react";
-//import { StoreContext } from "../context/StoreContext";
 import { login } from "../components/services/loginService.js";
 import { UserContext } from "../context/UserContext.jsx";
 import mundo_cubo_copia from "../../src/assets/image/mundo_cubo-copia.png";
 
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 const FormLogin = () => {
-  //const { users,setUserId, setUsername } = useContext(StoreContext);
-  const { users, setUserId, setUsername, setUrlIcons} = useContext(UserContext);
+  const { users, setUserId, setUsername, setUrlIcons } =
+    useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loginWithRedirect } = useAuth0();
@@ -78,7 +77,7 @@ const FormLogin = () => {
         console.log(" Respuesta ", response);
         setUserId(response.id_user);
         setUsername(response.name);
-        setUrlIcons(response.url_icons)
+        setUrlIcons(response.url_icons);
         localStorage.setItem("token", response.token);
         navigate(`/profile/${response.id_user}`, {
           state: { userName: response.name },
@@ -98,7 +97,7 @@ const FormLogin = () => {
         });
       });
     console.log("user res", user);
-    console.log("url icons:",setUrlIcons);
+    console.log("url icons:", setUrlIcons);
   };
 
   return (
@@ -113,10 +112,7 @@ const FormLogin = () => {
             />
           </Col>
 
-          <Col
-            sm
-            className="d-flex flex-column align-items-center mt-5 pt-5"
-          >
+          <Col sm className="d-flex flex-column align-items-center mt-5 pt-5">
             <h3 class="display-3">¡Hola! </h3>
             <h4 class="display-4">Bienvenido </h4>
             <Button
@@ -194,7 +190,7 @@ const FormLogin = () => {
           </Col>
         </Row>
       </Container>
-
+      <ToastContainer />
     </>
   );
 };
