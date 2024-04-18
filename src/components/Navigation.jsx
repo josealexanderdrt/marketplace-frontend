@@ -4,7 +4,6 @@ import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Navigation.css";
 import { useContext } from "react";
-///import { StoreContext } from "../context/StoreContext";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import {
   FaArrowRightFromBracket,
@@ -19,7 +18,6 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { UserContext } from "../context/UserContext";
 
 const Navigation = () => {
-  // const { username, userId } = useContext(StoreContext);
   const { username, userId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
 

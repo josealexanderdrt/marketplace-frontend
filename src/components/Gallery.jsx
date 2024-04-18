@@ -1,6 +1,4 @@
 import { useContext, useEffect } from "react";
-//import { StoreContext } from "../context/StoreContext";
-
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import "./Gallery.css";
@@ -21,7 +19,6 @@ import { User } from "@auth0/auth0-react";
 
 const Gallery = () => {
   const navigate = useNavigate();
-  //const { myProducts, setMyProducts,userId } = useContext(StoreContext);
   const { myProducts, setMyProducts } = useContext(ProductContext);
   const { userId, username, url_icons } = useContext(UserContext);
 

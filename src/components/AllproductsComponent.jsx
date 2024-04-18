@@ -11,7 +11,7 @@ import {
   Stack,
   Card,
 } from "react-bootstrap";
-//import { StoreContext } from "../context/StoreContext";
+
 import { useNavigate } from "react-router-dom";
 import IconHeart from "./IconHeart";
 import { ToastContainer, toast } from "react-toastify";
@@ -29,7 +29,6 @@ const AllproductsComponent = ({
   columnClass,
 }) => {
   const navigate = useNavigate();
-  //const { myProducts, setMyProducts, userId } = useContext(StoreContext);
   const { myProducts, setMyProducts } = useContext(ProductContext);
   const { userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");

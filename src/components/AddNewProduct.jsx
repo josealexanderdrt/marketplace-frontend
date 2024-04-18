@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import { useNavigate } from "react-router-dom";
 //import { useAuth0 } from "@auth0/auth0-react";
 import { Container } from "react-bootstrap";
-//import { StoreContext } from "../context/StoreContext";
 import { productAdd } from "./services/productAdd";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,10 +14,9 @@ import { ProductContext } from "../context/ProductContext.jsx";
 import { UserContext } from "../context/UserContext.jsx";
 
 const AddNewProduct = () => {
-  //const { getMyProducts } = useContext(StoreContext);
+ 
 
   const { myProducts, /* username, */ setMyProducts, getMyProducts } = useContext(ProductContext);
-  //const { userId, username } = useContext(StoreContext);
   const { userId, username } = useContext(UserContext);
 
   const [name, setName] = useState("");

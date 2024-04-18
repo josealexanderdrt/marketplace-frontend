@@ -1,6 +1,5 @@
 import { useEffect, useContext } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
-//import { StoreContext } from "../context/StoreContext";
 import { ProductContext } from "../context/ProductContext";
 import { Container, Button, Badge, Stack } from "react-bootstrap";
 import "../views/Detail_copy.css";
@@ -9,7 +8,6 @@ const DetailProductComponent = () => {
   const location = useLocation()
   const navigate = useNavigate();
   const fromHomePage = location.search.includes("from=homepage");
-  //const { myProducts, productDescription, setproductDescription } = useContext(StoreContext);
   const { myProducts, productDescription, setProductDescription } =
     useContext(ProductContext);
   const { id } = useParams();

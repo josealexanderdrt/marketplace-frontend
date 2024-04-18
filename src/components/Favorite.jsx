@@ -1,5 +1,4 @@
 import { useContext } from "react";
-//import { StoreContext } from "../context/StoreContext";
 import {
   Container,
   Image,

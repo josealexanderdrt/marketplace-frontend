@@ -19,7 +19,6 @@ const AllproductsComponent = ({
   columnClass,
 }) => {
   const navigate = useNavigate();
-  //const { myProducts, setMyProducts, userId } = useContext(StoreContext);
   const { myProducts, setMyProducts } = useContext(ProductContext);
   const {userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
