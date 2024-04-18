@@ -1,12 +1,9 @@
 import React, { useContext, useState } from "react";
 import mundo_cubo_copia from "../../src/assets/image/mundo_cubo-copia.png";
 import { Container, Image, Button, Form, Row, Col } from "react-bootstrap";
-
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-
 import google_aut from "../../src/assets/image/google_aut.png";
-import { ToastContainer } from "react-toastify";
 import "./FormLogin.css";
 import { signup } from "./services/signup.js";
 import { UserContext } from "../context/UserContext";
@@ -188,7 +185,6 @@ const FormRegister = () => {
             </Form>
           </Col>
         </Row>
-        <ToastContainer />
       </Container>
     </>
   );
