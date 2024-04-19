@@ -19,16 +19,18 @@ import { User } from "@auth0/auth0-react";
 
 const Gallery = () => {
   const navigate = useNavigate();
-  const { myProducts, setMyProducts } = useContext(ProductContext);
+  const { products, setProducts } = useContext(ProductContext);
   const { userId, username, url_icons } = useContext(UserContext);
 
   console.log("user useContext", UserContext);
-  const userProducts = myProducts.filter(
+  console.log(" producs   es: ", products);
+  
+  const userProducts = products.filter(
     (product) => product.id_user === userId
   );
 
   const addFavorite = (id) => {
-    const newProducts = myProducts.map((product) => {
+    const newProducts = products.map((product) => {
       console.log("producto PRUEBA", product);
       if (product.id_product === id) {
         return {
@@ -38,7 +40,7 @@ const Gallery = () => {
       }
       return product;
     });
-    setMyProducts(newProducts);
+    setProducts(newProducts);
   };
 
   return (

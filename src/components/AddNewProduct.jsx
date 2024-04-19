@@ -16,7 +16,7 @@ import { UserContext } from "../context/UserContext.jsx";
 const AddNewProduct = () => {
  
 
-  const { myProducts, /* username, */ setMyProducts, getMyProducts } = useContext(ProductContext);
+  const { getMyProducts } = useContext(ProductContext);
   const { userId, username } = useContext(UserContext);
 
   const [name, setName] = useState("");

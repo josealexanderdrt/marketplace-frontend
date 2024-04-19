@@ -19,7 +19,7 @@ const AllproductsComponent = ({
   columnClass,
 }) => {
   const navigate = useNavigate();
-  const { myProducts, setMyProducts } = useContext(ProductContext);
+  const { products, setProducts } = useContext(ProductContext);
   const {userId } = useContext(UserContext);
   const [filter, setFilter] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
@@ -37,7 +37,7 @@ const AllproductsComponent = ({
     setBrandFilter(e.target.value.toLowerCase());
   };
 
-  const filteredProducts = myProducts.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     const matchesFilter =
       product.name_product.toLowerCase().includes(filter) ||
       product.description.toLowerCase().includes(filter);
@@ -63,7 +63,7 @@ const AllproductsComponent = ({
   };
 
   const addFavorite = (id) => {
-    const newProducts = myProducts.map((product) => {
+    const newProducts = products.map((product) => {
       if (product.id_product === id) {
         return {
           ...product,
@@ -72,7 +72,7 @@ const AllproductsComponent = ({
       }
       return product;
     });
-    setMyProducts(newProducts);
+    setProducts(newProducts);
   };
 
   const addFavoriteOnClick = (id) => {

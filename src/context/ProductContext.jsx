@@ -7,13 +7,12 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [myProducts, setMyProducts] = useState([]);
   const [productDescription, setProductDescription] = useState({});
 
   const getMyProducts = () => {
     const myProductsResp = productsGet(token)
       .then((products) => {
-        setMyProducts(products.products.map((product) => ({ ...product })));
+        setProducts(products.products.map((product) => ({ ...product })));
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -29,8 +28,6 @@ export const ProductProvider = ({ children }) => {
       value={{
         products,
         setProducts,
-        myProducts,
-        setMyProducts,
         productDescription,
         setProductDescription,
         getMyProducts,

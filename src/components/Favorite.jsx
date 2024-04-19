@@ -17,12 +17,12 @@ import { UserContext } from "../context/UserContext";
 
 const Favorite = ({ userId, username }) => {
   const navigate = useNavigate();
-  const { myProducts, setMyProducts } = useContext(ProductContext);
+  const { products, setProducts} = useContext(ProductContext);
   const { url_icons } = useContext(UserContext);
 
 
   const removeFavorite = (id) => {
-    const newProducts = myProducts.map((product) => {
+    const newProducts = products.map((product) => {
       if (product.id_product === id) {
         return {
           ...product,
@@ -31,10 +31,10 @@ const Favorite = ({ userId, username }) => {
       }
       return product;
     });
-    setMyProducts(newProducts);
+    setProducts(newProducts);
   };
 
-  const productsLiked = myProducts.filter(
+  const productsLiked = products.filter(
     (filters) => filters.isFavorite === true
   );
 

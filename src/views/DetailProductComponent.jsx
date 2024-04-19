@@ -8,12 +8,12 @@ const DetailProductComponent = () => {
   const location = useLocation()
   const navigate = useNavigate();
   const fromHomePage = location.search.includes("from=homepage");
-  const { myProducts, productDescription, setProductDescription } =
+  const {productDescription, setProductDescription,  products, setProducts } =
     useContext(ProductContext);
   const { id } = useParams();
   console.log(productDescription);
   useEffect(() => {
-    const productFilter = myProducts.find(
+    const productFilter = products.find(
       (product) => product.id_product === parseInt(id)
     );
     setProductDescription(productFilter);
