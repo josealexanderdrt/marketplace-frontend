@@ -7,7 +7,6 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [productDescription, setProductDescription] = useState({});
 
   const getMyProducts = () => {
     const myProductsResp = productsGet(token)
@@ -28,10 +27,7 @@ export const ProductProvider = ({ children }) => {
       value={{
         products,
         setProducts,
-        productDescription,
-        setProductDescription,
         getMyProducts,
-        
       }}
     >
       {children}
