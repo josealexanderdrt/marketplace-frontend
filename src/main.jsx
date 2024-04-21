@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           {/* <StoreProvider> */}
             <Auth0Provider
               domain="dev-iw8elxagxdwxybue.us.auth0.com"
-              clientId="hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1"
+              clientId="T0JnePBH2Ynxd1bfgNiH2Jk4MkFdOzz6"  /* hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1   deployment */
               redirectUri={window.location.origin}
             >
               <App />
