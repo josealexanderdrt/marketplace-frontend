@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <UserProvider>
           {/* <StoreProvider> */}
             <Auth0Provider
-              domain="dev-iw8elxagxdwxybue.us.auth0.com"
+              domain="dev-skbt4lrbmrsq7v5k.us.auth0.com"  /* dev-iw8elxagxdwxybue.us.auth0.com   deployment */
               clientId="T0JnePBH2Ynxd1bfgNiH2Jk4MkFdOzz6"  /* hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1   deployment */
               redirectUri={window.location.origin}
             >
