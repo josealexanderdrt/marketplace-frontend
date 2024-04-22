@@ -16,8 +16,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <UserProvider>
           {/* <StoreProvider> */}
             <Auth0Provider
-              domain={process.env.REACT_APP_AUTH0_DOMAIN} /* domain y clientid tienen que estar en .env y luego pasarlo aca */ /* dev-iw8elxagxdwxybue.us.auth0.com   deployment */   /* dev-skbt4lrbmrsq7v5k.us.auth0.com */
-              clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}  /* hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1   deployment */   /* T0JnePBH2Ynxd1bfgNiH2Jk4MkFdOzz6 */
+              domain="dev-iw8elxagxdwxybue.us.auth0.com" /* domain y clientid tienen que estar en .env y luego pasarlo aca */ /* dev-iw8elxagxdwxybue.us.auth0.com   deployment */   /* dev-skbt4lrbmrsq7v5k.us.auth0.com */
+              clientId="hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1" /* hT268YQQlQ1LN93RM3qbCv4pR0ES8rr1   deployment */   /* T0JnePBH2Ynxd1bfgNiH2Jk4MkFdOzz6 */
               authorizationParams={{
                 redirect_uri: window.location.origin
               }}
