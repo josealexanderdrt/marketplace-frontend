@@ -1,4 +1,60 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import { Navbar, Container, Nav, Image } from "react-bootstrap";
+import { useAuth0 } from "@auth0/auth0-react";
+import cubos from "../../src/assets/image/cubos.png";
+import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
+
+const Navigation = () => {
+  const { isAuthenticated, user, logout } = useAuth0();
+
+  let imageToShow = isAuthenticated ? cubosLoggedIn : cubos;
+
+  return (
+    <Navbar expand="lg" className="bg-body-tertiary navbarLam" bg="light">
+      <Container>
+        <Navbar.Brand>
+          <Link to="/">
+            <Image className="cubos1" src={imageToShow} alt="cubos" roundedCircle />
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto">
+            {isAuthenticated ? (
+              <>
+                <Nav.Link as={Link} to="/allproducts" title="Todos los Productos">
+                  Todos los Productos
+                </Nav.Link>
+                <Nav.Link as={Link} to="/addproduct" title="Hacer una nueva Publicación">
+                  Hacer una nueva Publicación
+                </Nav.Link>
+                <Nav.Link as={Link} to={`/profile/${user.sub}`} title="Mi Perfil">
+                  Mi Perfil
+                </Nav.Link>
+                <Nav.Link as={Link} onClick={() => logout({ returnTo: "/" })} title="Salir">
+                  Salir
+                </Nav.Link>
+              </>
+            ) : (
+              <>
+                <Nav.Link as={Link} to="/auth_user">
+                  Iniciar sesión
+                </Nav.Link>
+                <Nav.Link as={Link} to="/users">
+                  Registrar
+                </Nav.Link>
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default Navigation;
+/* import { Link } from "react-router-dom";
 import cubos from "../../src/assets/image/cubos.png";
 import cubosLoggedIn from "../../src/assets/image/cubosLoggedIn.png";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -20,8 +76,8 @@ import { UserContext } from "../context/UserContext";
 const Navigation = () => {
   const { username, userId , localUserId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
-/* 
-  const userId = isAuthenticated && user ? user.sub : localUserId; */
+
+  //const userId = isAuthenticated && user ? user.sub : localUserId;
 
   let imageToShow;
   if (userId === null) {
@@ -29,19 +85,6 @@ const Navigation = () => {
   } else {
     imageToShow = cubosLoggedIn;
   }
-   {/* <>
-                <Navbar.Text>
-                  {user.name} <FaUserLarge />
-                </Navbar.Text>
-
-                <Nav.Link
-                  onClick={() => logout({ returnTo: "/" })}
-                  title="Salir"
-                >
-                  <FaArrowRightFromBracket />
-                </Nav.Link>
-              </> */}
-
   return (
     <Navbar expand="lg" className="bg-body-tertiary navbarLam " bg="light" data-bs-theme="light">
       <Container>
@@ -196,3 +239,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+ */

@@ -1,4 +1,43 @@
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button, Container, Row, Col, Image } from "react-bootstrap";
+import googleIcon from "../../src/assets/image/google_aut.png";
+import mundo_cubo_copia from "../../src/assets/image/mundo_cubo-copia.png";
+
+const FormLogin = () => {
+  const { loginWithRedirect } = useAuth0();
+
+  return (
+    <Container className="m-3 p-2">
+      <Row>
+        <Col sm className="d-flex justify-content-center">
+          <Image src={mundo_cubo_copia} alt="mundo_cubos" className="img_lg" />
+        </Col>
+        <Col sm className="d-flex flex-column align-items-center mt-5 pt-5">
+          <h3 class="display-3">¡Hola!</h3>
+          <h4 class="display-4">Bienvenido</h4>
+          <Button
+            className="auth_google rounded-button"
+            variant="light"
+            onClick={() =>
+              loginWithRedirect({
+                screen_hint: "signup",
+                connection: "google-oauth2",
+              })
+            }
+          >
+            <img className="icons_google_aut" src={googleIcon} alt="aut-google" />
+            Iniciar con Google
+          </Button>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default FormLogin;
+
+/* import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   Container,
@@ -148,7 +187,7 @@ const FormLogin = () => {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <Form.Text className="text-muted">
-                  {/*  We'll never share your email with anyone else. */}
+                 
                 </Form.Text>
               </Form.Group>
 
@@ -196,3 +235,4 @@ const FormLogin = () => {
 };
 
 export default FormLogin;
+ */
