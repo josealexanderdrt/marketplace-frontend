@@ -18,8 +18,10 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { UserContext } from "../context/UserContext";
 
 const Navigation = () => {
-  const { username, userId } = useContext(UserContext);
+  const { username, userId: localUserId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
+
+  const userId = isAuthenticated && user ? user.sub : localUserId;
 
   let imageToShow;
   if (userId === null) {
@@ -27,6 +29,18 @@ const Navigation = () => {
   } else {
     imageToShow = cubosLoggedIn;
   }
+   {/* <>
+                <Navbar.Text>
+                  {user.name} <FaUserLarge />
+                </Navbar.Text>
+
+                <Nav.Link
+                  onClick={() => logout({ returnTo: "/" })}
+                  title="Salir"
+                >
+                  <FaArrowRightFromBracket />
+                </Nav.Link>
+              </> */}
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary navbarLam " bg="light" data-bs-theme="light">
@@ -47,17 +61,62 @@ const Navigation = () => {
           <Nav className="ms-auto " >
             {isAuthenticated ? (
               <>
-                <Navbar.Text>
-                  {user.name} <FaUserLarge />
-                </Navbar.Text>
+                <Nav.Link
+                  as={Link}
+                  to="/allproducts"
+                  title="Todos los Productos"
+                >
+                  <FaGlobe />
+                </Nav.Link>
 
                 <Nav.Link
+                  as={Link}
+                  to="/addproduct"
+                  title="Hacer una nueva Publicación"
+                >
+                  <FaCirclePlus />
+                </Nav.Link>
+
+                <Nav.Link as={Link} to={`/profile/${userId}`} title="Mi Perfil">
+                  <FaUserLarge />
+                </Nav.Link>
+
+                <Nav.Link
+                  as={Link}
                   onClick={() => logout({ returnTo: "/" })}
                   title="Salir"
                 >
                   <FaArrowRightFromBracket />
                 </Nav.Link>
+                <NavDropdown title={user.name} id="basic-nav-dropdown">
+                  <NavDropdown.Item as={Link} to={`/profile/${userId}`}>
+                    <FaUserLarge /> Mi perfil
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item as={Link} to={`/favorite/${userId}`}>
+                    <FaHeartCircleCheck /> Mis Favoritos
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/addproduct">
+                    <FaCirclePlus /> Publicar Producto
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/allproducts">
+                    <FaGlobe /> Todos los Productos
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                 
+                  <NavDropdown.Item
+                    as={Link}
+                    onClick={() => logout({ returnTo: "/" })}
+                    title="Salir"
+                  >
+                    <FaArrowRightFromBracket
+                      style={{color: "black" }}
+                    />{""} Cerrar sesión
+                  </NavDropdown.Item>
+                </NavDropdown>
               </>
+
+              
             ) : username ? (
               <>
               
