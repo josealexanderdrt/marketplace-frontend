@@ -18,10 +18,10 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { UserContext } from "../context/UserContext";
 
 const Navigation = () => {
-  const { username, userId: localUserId } = useContext(UserContext);
+  const { username, userId , localUserId } = useContext(UserContext);
   const { isAuthenticated, user, logout } = useAuth0();
-
-  const userId = isAuthenticated && user ? user.sub : localUserId;
+/* 
+  const userId = isAuthenticated && user ? user.sub : localUserId; */
 
   let imageToShow;
   if (userId === null) {
@@ -77,7 +77,7 @@ const Navigation = () => {
                   <FaCirclePlus />
                 </Nav.Link>
 
-                <Nav.Link as={Link} to={`/profile/${userId}`} title="Mi Perfil">
+                <Nav.Link as={Link} to={`/profile/${user.sub}`} title="Mi Perfil">
                   <FaUserLarge />
                 </Nav.Link>
 
@@ -89,11 +89,11 @@ const Navigation = () => {
                   <FaArrowRightFromBracket />
                 </Nav.Link>
                 <NavDropdown title={user.name} id="basic-nav-dropdown">
-                  <NavDropdown.Item as={Link} to={`/profile/${userId}`}>
+                  <NavDropdown.Item as={Link} to={`/profile/${user.sub}`}>
                     <FaUserLarge /> Mi perfil
                   </NavDropdown.Item>
 
-                  <NavDropdown.Item as={Link} to={`/favorite/${userId}`}>
+                  <NavDropdown.Item as={Link} to={`/favorite/${user.sub}`}>
                     <FaHeartCircleCheck /> Mis Favoritos
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Link} to="/addproduct">
