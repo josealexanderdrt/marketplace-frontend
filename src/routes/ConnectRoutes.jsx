@@ -21,11 +21,11 @@ const ConnectRoutes = () => {
       <R path="/" element={<Home />} />
       <R path="/auth_user" element={<Login />} />
       <R path="/users" element={<Register />} />
-      <R element={<RouteProtection username={username}/>}>
+      {/* <R element={<RouteProtection username={username}/>}> */}
         <R path="/addproduct" element={<AddProduct />} />
         <R path="/profile/:id" element={<MyProfile />} />
         <R path="/favorite/:id" element={<MyFavorite />} />
-      </R>
+      {/* </R> */}
       <R path="*" element={<NotFound />} />
       <R path="/allproducts" element={<AllProducts />} />
       {<R path="/product/:id" element={<DetailProductComponent />} />}{" "}
